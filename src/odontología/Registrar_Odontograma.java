@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alexander Batista
  */
-public class Odontograma extends javax.swing.JFrame {
+public class Registrar_Odontograma extends javax.swing.JInternalFrame {
 
     public boolean carie;
     public boolean Obturacion;
@@ -55,11 +55,10 @@ public class Odontograma extends javax.swing.JFrame {
 
     DefaultTableModel jtbmDetalleOdontograma;
     Crear crear;
-
     /**
-     * Creates new form Odontograma
+     * Creates new form Odonto
      */
-    public Odontograma() {
+    public Registrar_Odontograma() {
         initComponents();
         this.jbtnCoronaBuena.setVisible(false);
         this.jbtnConEndodoncia.setVisible(false);
@@ -77,7 +76,6 @@ public class Odontograma extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(300);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(500);
         jTable1.getColumnModel().getColumn(3).setPreferredWidth(300);
-
     }
 
     /**
@@ -372,8 +370,6 @@ public class Odontograma extends javax.swing.JFrame {
                     .addComponent(jpnlPosicionCarie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jpnlOdontograma.setBackground(new java.awt.Color(255, 255, 255));
         jpnlOdontograma.setBorder(javax.swing.BorderFactory.createTitledBorder("Diente"));
@@ -2174,6 +2170,104 @@ public class Odontograma extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbtnDiente11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente11ActionPerformed
+        cod_diente = 11;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente11;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente11, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente11ActionPerformed
+
+    private void jbtnDiente12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente12ActionPerformed
+        cod_diente = 12;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente12;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente12, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente12ActionPerformed
+
+    private void jbtnDiente13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente13ActionPerformed
+        cod_diente = 13;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente13;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente13, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente13ActionPerformed
+
+    private void jbtnDiente14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente14ActionPerformed
+        cod_diente = 14;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente14;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente14, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente14ActionPerformed
+
+    private void jbtnDiente15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente15ActionPerformed
+        cod_diente = 15;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente15;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente15, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente15ActionPerformed
+
+    private void jbtnDiente16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente16ActionPerformed
+        cod_diente = 16;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente16;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente16, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente16ActionPerformed
+
+    private void jbtnDiente17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente17ActionPerformed
+        cod_diente = 17;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente17;
+
+            jPanel = jpnlDiente11_18;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente17, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente17ActionPerformed
+
     private void jbtnDiente18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente18ActionPerformed
         cod_diente = 18;
         if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
@@ -2181,13 +2275,629 @@ public class Odontograma extends javax.swing.JFrame {
             jButton = jbtnDiente18;
 
             jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion 
-                || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio 
-                || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion
+            || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio
+            || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
             Trastornos(jbtnDiente18, jpnlDiente11_18);
             llena_Tabla();
         }
     }//GEN-LAST:event_jbtnDiente18ActionPerformed
+
+    private void jbtnDiente51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente51ActionPerformed
+        cod_diente = 51;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente51;
+
+            jPanel = jpnlDiente51_55;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente51, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente51ActionPerformed
+
+    private void jbtnDiente52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente52ActionPerformed
+        cod_diente = 52;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente52;
+
+            jPanel = jpnlDiente51_55;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente52, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente52ActionPerformed
+
+    private void jbtnDiente53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente53ActionPerformed
+        cod_diente = 53;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente53;
+
+            jPanel = jpnlDiente51_55;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente53, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente53ActionPerformed
+
+    private void jbtnDiente54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente54ActionPerformed
+        cod_diente = 54;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente54;
+
+            jPanel = jpnlDiente51_55;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente54, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente54ActionPerformed
+
+    private void jbtnDiente55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente55ActionPerformed
+        cod_diente = 55;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente55;
+
+            jPanel = jpnlDiente51_55;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente55, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente55ActionPerformed
+
+    private void jbtnDiente81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente81ActionPerformed
+        cod_diente = 81;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente81;
+
+            jPanel = jpnlDiente81_85;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente81, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente81ActionPerformed
+
+    private void jbtnDiente82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente82ActionPerformed
+        cod_diente = 82;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente82;
+
+            jPanel = jpnlDiente81_85;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente82, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente82ActionPerformed
+
+    private void jbtnDiente83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente83ActionPerformed
+        cod_diente = 83;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente83;
+
+            jPanel = jpnlDiente81_85;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente83, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente83ActionPerformed
+
+    private void jbtnDiente84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente84ActionPerformed
+        cod_diente = 84;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente84;
+
+            jPanel = jpnlDiente81_85;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente84, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente84ActionPerformed
+
+    private void jbtnDiente85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente85ActionPerformed
+        cod_diente = 85;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente85;
+
+            jPanel = jpnlDiente81_85;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente85, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente85ActionPerformed
+
+    private void jbtnDiente41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente41ActionPerformed
+        cod_diente = 41;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente41;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente41, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente41ActionPerformed
+
+    private void jbtnDiente42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente42ActionPerformed
+        cod_diente = 42;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente42;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente42, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente42ActionPerformed
+
+    private void jbtnDiente43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente43ActionPerformed
+        cod_diente = 43;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente43;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente43, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente43ActionPerformed
+
+    private void jbtnDiente44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente44ActionPerformed
+        cod_diente = 44;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente44;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente44, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente44ActionPerformed
+
+    private void jbtnDiente45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente45ActionPerformed
+        cod_diente = 45;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente45;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente45, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente45ActionPerformed
+
+    private void jbtnDiente46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente46ActionPerformed
+        cod_diente = 46;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente46;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente46, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente46ActionPerformed
+
+    private void jbtnDiente47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente47ActionPerformed
+        cod_diente = 47;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente47;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente47, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente47ActionPerformed
+
+    private void jbtnDiente48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente48ActionPerformed
+        cod_diente = 48;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente48;
+
+            jPanel = jpnlDiente41_48;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente48, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente48ActionPerformed
+
+    private void jbtnDiente28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente28ActionPerformed
+        cod_diente = 28;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente28;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente28, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente28ActionPerformed
+
+    private void jbtnDiente27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente27ActionPerformed
+        cod_diente = 27;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente27;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente27, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente27ActionPerformed
+
+    private void jbtnDiente26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente26ActionPerformed
+        cod_diente = 26;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente26;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente26, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente26ActionPerformed
+
+    private void jbtnDiente25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente25ActionPerformed
+        cod_diente = 25;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente25;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente25, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente25ActionPerformed
+
+    private void jbtnDiente24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente24ActionPerformed
+        cod_diente = 24;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente24;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente24, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente24ActionPerformed
+
+    private void jbtnDiente23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente23ActionPerformed
+        cod_diente = 23;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente23;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente23, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente23ActionPerformed
+
+    private void jbtnDiente22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente22ActionPerformed
+        cod_diente = 22;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente22;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente22, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente22ActionPerformed
+
+    private void jbtnDiente21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente21ActionPerformed
+        cod_diente = 21;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente21;
+
+            jPanel = jpnlDiente21_28;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente21, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente21ActionPerformed
+
+    private void jbtnDiente65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente65ActionPerformed
+        cod_diente = 65;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente65;
+
+            jPanel = jpnlDiente61_65;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente65, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente65ActionPerformed
+
+    private void jbtnDiente64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente64ActionPerformed
+        cod_diente = 64;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente64;
+
+            jPanel = jpnlDiente61_65;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente64, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente64ActionPerformed
+
+    private void jbtnDiente63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente63ActionPerformed
+        cod_diente = 63;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente63;
+
+            jPanel = jpnlDiente61_65;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente63, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente63ActionPerformed
+
+    private void jbtnDiente62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente62ActionPerformed
+        cod_diente = 62;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente62;
+
+            jPanel = jpnlDiente61_65;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente62, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente62ActionPerformed
+
+    private void jbtnDiente61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente61ActionPerformed
+        cod_diente = 61;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente61;
+
+            jPanel = jpnlDiente61_65;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente61, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente61ActionPerformed
+
+    private void jbtnDiente75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente75ActionPerformed
+        cod_diente = 75;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente75;
+
+            jPanel = jpnlDiente71_75;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente75, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente75ActionPerformed
+
+    private void jbtnDiente74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente74ActionPerformed
+        cod_diente = 74;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente74;
+
+            jPanel = jpnlDiente71_75;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente74, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente74ActionPerformed
+
+    private void jbtnDiente73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente73ActionPerformed
+        cod_diente = 73;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente73;
+
+            jPanel = jpnlDiente71_75;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente73, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente73ActionPerformed
+
+    private void jbtnDiente72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente72ActionPerformed
+        cod_diente = 72;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente72;
+
+            jPanel = jpnlDiente71_75;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente72, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente72ActionPerformed
+
+    private void jbtnDiente71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente71ActionPerformed
+        cod_diente = 71;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente71;
+
+            jPanel = jpnlDiente71_75;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente71, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente71ActionPerformed
+
+    private void jbtnDiente38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente38ActionPerformed
+        cod_diente = 38;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente38;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente38, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente38ActionPerformed
+
+    private void jbtnDiente37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente37ActionPerformed
+        cod_diente = 37;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente37;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente37, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente37ActionPerformed
+
+    private void jbtnDiente36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente36ActionPerformed
+        cod_diente = 36;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente36;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente36, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente36ActionPerformed
+
+    private void jbtnDiente35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente35ActionPerformed
+        cod_diente = 35;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente35;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente35, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente35ActionPerformed
+
+    private void jbtnDiente34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente34ActionPerformed
+        cod_diente = 34;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente34;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente34, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente34ActionPerformed
+
+    private void jbtnDiente33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente33ActionPerformed
+        cod_diente = 33;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente33;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente33, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente33ActionPerformed
+
+    private void jbtnDiente32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente32ActionPerformed
+        cod_diente = 32;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente32;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente32, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente32ActionPerformed
+
+    private void jbtnDiente31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente31ActionPerformed
+        cod_diente = 31;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente31;
+
+            jPanel = jpnlDiente31_38;
+        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
+            Trastornos(jbtnDiente31, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente31ActionPerformed
 
     private void jbtnCarieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCarieActionPerformed
         TraumaAplicado = "carie";
@@ -2216,720 +2926,6 @@ public class Odontograma extends javax.swing.JFrame {
         this.IonometroDeVidrio = false;
     }//GEN-LAST:event_jbtnCarieActionPerformed
 
-    private void jbtnDiente17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente17ActionPerformed
-        cod_diente = 17;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente17;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente17, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente17ActionPerformed
-
-    private void jbtnDiente16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente16ActionPerformed
-        cod_diente = 16;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente16;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente16, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente16ActionPerformed
-
-    private void jbtnDiente15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente15ActionPerformed
-        cod_diente = 15;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente15;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente15, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente15ActionPerformed
-
-    private void jbtnDiente14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente14ActionPerformed
-        cod_diente = 14;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente14;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente14, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente14ActionPerformed
-
-    private void jbtnDiente13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente13ActionPerformed
-        cod_diente = 13;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente13;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente13, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente13ActionPerformed
-
-    private void jbtnDiente12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente12ActionPerformed
-        cod_diente = 12;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente12;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente12, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente12ActionPerformed
-
-    private void jbtnDiente11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente11ActionPerformed
-        cod_diente = 11;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente11;
-
-            jPanel = jpnlDiente11_18;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente11, jpnlDiente11_18);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente11ActionPerformed
-
-    private void jbtnDiente55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente55ActionPerformed
-        cod_diente = 55;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente55;
-
-            jPanel = jpnlDiente51_55;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente55, jpnlDiente51_55);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente55ActionPerformed
-
-    private void jbtnDiente54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente54ActionPerformed
-        cod_diente = 54;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente54;
-
-            jPanel = jpnlDiente51_55;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente54, jpnlDiente51_55);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente54ActionPerformed
-
-    private void jbtnDiente53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente53ActionPerformed
-        cod_diente = 53;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente53;
-
-            jPanel = jpnlDiente51_55;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente53, jpnlDiente51_55);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente53ActionPerformed
-
-    private void jbtnDiente52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente52ActionPerformed
-        cod_diente = 52;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente52;
-
-            jPanel = jpnlDiente51_55;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente52, jpnlDiente51_55);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente52ActionPerformed
-
-    private void jbtnDiente51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente51ActionPerformed
-        cod_diente = 51;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente51;
-
-            jPanel = jpnlDiente51_55;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente51, jpnlDiente51_55);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente51ActionPerformed
-
-    private void jbtnDiente85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente85ActionPerformed
-        cod_diente = 85;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente85;
-
-            jPanel = jpnlDiente81_85;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente85, jpnlDiente81_85);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente85ActionPerformed
-
-    private void jbtnDiente84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente84ActionPerformed
-        cod_diente = 84;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente84;
-
-            jPanel = jpnlDiente81_85;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente84, jpnlDiente81_85);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente84ActionPerformed
-
-    private void jbtnDiente83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente83ActionPerformed
-        cod_diente = 83;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente83;
-
-            jPanel = jpnlDiente81_85;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente83, jpnlDiente81_85);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente83ActionPerformed
-
-    private void jbtnDiente82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente82ActionPerformed
-        cod_diente = 82;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente82;
-
-            jPanel = jpnlDiente81_85;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente82, jpnlDiente81_85);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente82ActionPerformed
-
-    private void jbtnDiente81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente81ActionPerformed
-        cod_diente = 81;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente81;
-
-            jPanel = jpnlDiente81_85;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente81, jpnlDiente81_85);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente81ActionPerformed
-
-    private void jbtnDiente48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente48ActionPerformed
-        cod_diente = 48;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente48;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente48, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente48ActionPerformed
-
-    private void jbtnDiente47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente47ActionPerformed
-        cod_diente = 47;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente47;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente47, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente47ActionPerformed
-
-    private void jbtnDiente46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente46ActionPerformed
-        cod_diente = 46;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente46;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente46, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente46ActionPerformed
-
-    private void jbtnDiente45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente45ActionPerformed
-        cod_diente = 45;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente45;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente45, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente45ActionPerformed
-
-    private void jbtnDiente44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente44ActionPerformed
-        cod_diente = 44;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente44;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente44, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente44ActionPerformed
-
-    private void jbtnDiente43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente43ActionPerformed
-        cod_diente = 43;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente43;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente43, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente43ActionPerformed
-
-    private void jbtnDiente42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente42ActionPerformed
-        cod_diente = 42;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente42;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente42, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente42ActionPerformed
-
-    private void jbtnDiente41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente41ActionPerformed
-        cod_diente = 41;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente41;
-
-            jPanel = jpnlDiente41_48;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente41, jpnlDiente41_48);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente41ActionPerformed
-
-    private void jbtnDiente21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente21ActionPerformed
-        cod_diente = 21;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente21;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente21, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente21ActionPerformed
-
-    private void jbtnDiente22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente22ActionPerformed
-        cod_diente = 22;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente22;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente22, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente22ActionPerformed
-
-    private void jbtnDiente23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente23ActionPerformed
-        cod_diente = 23;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente23;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente23, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente23ActionPerformed
-
-    private void jbtnDiente24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente24ActionPerformed
-        cod_diente = 24;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente24;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente24, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente24ActionPerformed
-
-    private void jbtnDiente25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente25ActionPerformed
-        cod_diente = 25;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente25;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente25, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente25ActionPerformed
-
-    private void jbtnDiente26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente26ActionPerformed
-        cod_diente = 26;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente26;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente26, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente26ActionPerformed
-
-    private void jbtnDiente27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente27ActionPerformed
-        cod_diente = 27;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente27;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente27, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente27ActionPerformed
-
-    private void jbtnDiente28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente28ActionPerformed
-        cod_diente = 28;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente28;
-
-            jPanel = jpnlDiente21_28;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente28, jpnlDiente21_28);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente28ActionPerformed
-
-    private void jbtnDiente61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente61ActionPerformed
-        cod_diente = 61;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente61;
-
-            jPanel = jpnlDiente61_65;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente61, jpnlDiente61_65);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente61ActionPerformed
-
-    private void jbtnDiente62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente62ActionPerformed
-        cod_diente = 62;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente62;
-
-            jPanel = jpnlDiente61_65;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente62, jpnlDiente61_65);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente62ActionPerformed
-
-    private void jbtnDiente63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente63ActionPerformed
-        cod_diente = 63;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente63;
-
-            jPanel = jpnlDiente61_65;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente63, jpnlDiente61_65);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente63ActionPerformed
-
-    private void jbtnDiente64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente64ActionPerformed
-        cod_diente = 64;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente64;
-
-            jPanel = jpnlDiente61_65;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente64, jpnlDiente61_65);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente64ActionPerformed
-
-    private void jbtnDiente65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente65ActionPerformed
-        cod_diente = 65;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente65;
-
-            jPanel = jpnlDiente61_65;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente65, jpnlDiente61_65);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente65ActionPerformed
-
-    private void jbtnDiente71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente71ActionPerformed
-        cod_diente = 71;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente71;
-
-            jPanel = jpnlDiente71_75;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente71, jpnlDiente71_75);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente71ActionPerformed
-
-    private void jbtnDiente72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente72ActionPerformed
-        cod_diente = 72;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente72;
-
-            jPanel = jpnlDiente71_75;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente72, jpnlDiente71_75);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente72ActionPerformed
-
-    private void jbtnDiente73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente73ActionPerformed
-        cod_diente = 73;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente73;
-
-            jPanel = jpnlDiente71_75;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente73, jpnlDiente71_75);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente73ActionPerformed
-
-    private void jbtnDiente74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente74ActionPerformed
-        cod_diente = 74;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente74;
-
-            jPanel = jpnlDiente71_75;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente74, jpnlDiente71_75);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente74ActionPerformed
-
-    private void jbtnDiente75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente75ActionPerformed
-        cod_diente = 75;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente75;
-
-            jPanel = jpnlDiente71_75;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente75, jpnlDiente71_75);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente75ActionPerformed
-
-    private void jbtnDiente31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente31ActionPerformed
-        cod_diente = 31;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente31;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente31, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente31ActionPerformed
-
-    private void jbtnDiente32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente32ActionPerformed
-        cod_diente = 32;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente32;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente32, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente32ActionPerformed
-
-    private void jbtnDiente33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente33ActionPerformed
-        cod_diente = 33;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente33;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente33, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente33ActionPerformed
-
-    private void jbtnDiente34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente34ActionPerformed
-        cod_diente = 34;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente34;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente34, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente34ActionPerformed
-
-    private void jbtnDiente35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente35ActionPerformed
-        cod_diente = 35;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente35;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente35, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente35ActionPerformed
-
-    private void jbtnDiente36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente36ActionPerformed
-        cod_diente = 36;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente36;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente36, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente36ActionPerformed
-
-    private void jbtnDiente37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente37ActionPerformed
-        cod_diente = 37;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente37;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente37, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente37ActionPerformed
-
-    private void jbtnDiente38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente38ActionPerformed
-        cod_diente = 38;
-        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
-            llamarDialogo();
-            jButton = jbtnDiente38;
-
-            jPanel = jpnlDiente31_38;
-        } else if(ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion                 || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio                 || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar){
-            Trastornos(jbtnDiente38, jpnlDiente31_38);
-            llena_Tabla();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnDiente38ActionPerformed
-
     private void jbtnObturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnObturacionActionPerformed
         TraumaAplicado = "Obturacion";
         this.carie = false;
@@ -2955,185 +2951,8 @@ public class Odontograma extends javax.swing.JFrame {
         this.Provisional = false;
         this.ResinaFisica = false;
         this.IonometroDeVidrio = false;
-// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jbtnObturacionActionPerformed
-
-    private void jchbLInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbLInternoActionPerformed
-        Pos = "Lderecho";
-        if (this.jchbLInterno.isSelected()) {
-            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
-            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
-        } else {
-            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
-                if (jpnlDienteCarie.getComponent(i).getName() != null) {
-                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
-                        jpnlDienteCarie.getComponent(i).setVisible(false);
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jchbLInternoActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Trastornos(jButton, jPanel);
-        llena_Tabla();
-        this.jchbCentro.setSelected(false);
-        this.jchbLExterno.setSelected(false);
-        this.jchbLInterno.setSelected(false);
-        this.jchbPFrontal.setSelected(false);
-        this.jchbPTracera.setSelected(false);
-        for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
-            jpnlDienteCarie.getComponent(i).setVisible(false);
-        }
-        jbtnDienteCarie.setVisible(true);
-        this.jDialog1.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jchbCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbCentroActionPerformed
-        Pos = "centro";
-        if (this.jchbCentro.isSelected()) {
-            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
-            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
-        } else {
-            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
-                if (jpnlDienteCarie.getComponent(i).getName() != null) {
-                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
-                        jpnlDienteCarie.getComponent(i).setVisible(false);
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jchbCentroActionPerformed
-
-
-    private void jchbLExternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbLExternoActionPerformed
-        Pos = "Lizquierdo";
-        if (this.jchbLExterno.isSelected()) {
-            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
-            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
-        } else {
-            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
-                if (jpnlDienteCarie.getComponent(i).getName() != null) {
-                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
-                        jpnlDienteCarie.getComponent(i).setVisible(false);
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jchbLExternoActionPerformed
-
-    private void jchbPFrontalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbPFrontalActionPerformed
-        Pos = "superior";
-        if (this.jchbPFrontal.isSelected()) {
-            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
-            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
-        } else {
-            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
-                if (jpnlDienteCarie.getComponent(i).getName() != null) {
-                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
-                        jpnlDienteCarie.getComponent(i).setVisible(false);
-                    }
-                }
-            }
-        }// TODO add your handling code here:
-    }//GEN-LAST:event_jchbPFrontalActionPerformed
-
-    private void jchbPTraceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbPTraceraActionPerformed
-        Pos = "inferior";
-        if (this.jchbPTracera.isSelected()) {
-            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
-            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
-        } else {
-            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
-                if (jpnlDienteCarie.getComponent(i).getName() != null) {
-                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
-                        jpnlDienteCarie.getComponent(i).setVisible(false);
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jchbPTraceraActionPerformed
-
-    private void jbtnExodonciaRealizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExodonciaRealizadaActionPerformed
-        TraumaAplicado = "ExodonciaRealizada";
-        this.carie = false;
-        this.Obturacion = false;
-        this.CoronaBuena = false;
-        this.CoronaARealizar = false;
-        this.ConEndodoncia = false;
-        this.NecesitaEndodoncia = false;
-        this.Trauma = false;
-        this.Recurrente = false;
-        this.DienteAusente = false;
-        this.SinErupcionar = false;
-        this.ConSellante = false;
-        this.NecesitaSellante = false;
-        this.ExodonciaRealizada = true;
-        this.ExodonciaIndicada = false;
-        this.Abracion = false;
-        this.Atricion = false;
-        this.NucleoBueno = false;
-        this.NucleoARealizar = false;
-        this.SemiIncluido = false;
-        this.Giroversion = false;
-        this.Provisional = false;
-        this.ResinaFisica = false;
-        this.IonometroDeVidrio = false;
-    }//GEN-LAST:event_jbtnExodonciaRealizadaActionPerformed
-
-    private void jbtnSemiIncluidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSemiIncluidoActionPerformed
-        TraumaAplicado = "SemiIncluido";
-        this.carie = false;
-        this.Obturacion = false;
-        this.CoronaBuena = false;
-        this.CoronaARealizar = false;
-        this.ConEndodoncia = false;
-        this.NecesitaEndodoncia = false;
-        this.Trauma = false;
-        this.Recurrente = false;
-        this.DienteAusente = false;
-        this.SinErupcionar = false;
-        this.ConSellante = false;
-        this.NecesitaSellante = false;
-        this.ExodonciaRealizada = false;
-        this.ExodonciaIndicada = false;
-        this.Abracion = false;
-        this.Atricion = false;
-        this.NucleoBueno = false;
-        this.NucleoARealizar = false;
-        this.SemiIncluido = true;
-        this.Giroversion = false;
-        this.Provisional = false;
-        this.ResinaFisica = false;
-        this.IonometroDeVidrio = false;
-    }//GEN-LAST:event_jbtnSemiIncluidoActionPerformed
-
-    private void jbtnSinErupcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSinErupcionarActionPerformed
-        TraumaAplicado = "SinErupcionar";
-        this.carie = false;
-        this.Obturacion = false;
-        this.CoronaBuena = false;
-        this.CoronaARealizar = false;
-        this.ConEndodoncia = false;
-        this.NecesitaEndodoncia = false;
-        this.Trauma = false;
-        this.Recurrente = false;
-        this.DienteAusente = false;
-        this.SinErupcionar = true;
-        this.ConSellante = false;
-        this.NecesitaSellante = false;
-        this.ExodonciaRealizada = false;
-        this.ExodonciaIndicada = false;
-        this.Abracion = false;
-        this.Atricion = false;
-        this.NucleoBueno = false;
-        this.NucleoARealizar = false;
-        this.SemiIncluido = false;
-        this.Giroversion = false;
-        this.Provisional = false;
-        this.ResinaFisica = false;
-        this.IonometroDeVidrio = false;
-    }//GEN-LAST:event_jbtnSinErupcionarActionPerformed
 
     private void jbtnCoronaBuenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCoronaBuenaActionPerformed
         TraumaAplicado = "CoronaBuena";
@@ -3324,6 +3143,33 @@ public class Odontograma extends javax.swing.JFrame {
         this.IonometroDeVidrio = false;
     }//GEN-LAST:event_jbtnDienteAusenteActionPerformed
 
+    private void jbtnSinErupcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSinErupcionarActionPerformed
+        TraumaAplicado = "SinErupcionar";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = true;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnSinErupcionarActionPerformed
+
     private void jbtnConSellanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConSellanteActionPerformed
         TraumaAplicado = "ConSellante";
         this.carie = false;
@@ -3377,6 +3223,33 @@ public class Odontograma extends javax.swing.JFrame {
         this.ResinaFisica = false;
         this.IonometroDeVidrio = false;
     }//GEN-LAST:event_jbtnNecesitaSellanteActionPerformed
+
+    private void jbtnExodonciaRealizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExodonciaRealizadaActionPerformed
+        TraumaAplicado = "ExodonciaRealizada";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = true;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnExodonciaRealizadaActionPerformed
 
     private void jbtnExodonciaIndicadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExodonciaIndicadaActionPerformed
         TraumaAplicado = "ExodonciaIndicada";
@@ -3513,6 +3386,33 @@ public class Odontograma extends javax.swing.JFrame {
         this.IonometroDeVidrio = false;
     }//GEN-LAST:event_jbtnNucleoARealizarActionPerformed
 
+    private void jbtnSemiIncluidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSemiIncluidoActionPerformed
+        TraumaAplicado = "SemiIncluido";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = true;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnSemiIncluidoActionPerformed
+
     private void jbtnGiroversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGiroversionActionPerformed
         TraumaAplicado = "Giroversion";
         this.carie = false;
@@ -3625,37 +3525,101 @@ public class Odontograma extends javax.swing.JFrame {
         EliminarTrastorno(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void jchbCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbCentroActionPerformed
+        Pos = "centro";
+        if (this.jchbCentro.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Odontograma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jchbCentroActionPerformed
 
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Odontograma().setVisible(true);
+    private void jchbLInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbLInternoActionPerformed
+        Pos = "Lderecho";
+        if (this.jchbLInterno.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
             }
-        });
-    }
+        }
+    }//GEN-LAST:event_jchbLInternoActionPerformed
+
+    private void jchbLExternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbLExternoActionPerformed
+        Pos = "Lizquierdo";
+        if (this.jchbLExterno.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jchbLExternoActionPerformed
+
+    private void jchbPFrontalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbPFrontalActionPerformed
+        Pos = "superior";
+        if (this.jchbPFrontal.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_jchbPFrontalActionPerformed
+
+    private void jchbPTraceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbPTraceraActionPerformed
+        Pos = "inferior";
+        if (this.jchbPTracera.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jchbPTraceraActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Trastornos(jButton, jPanel);
+        llena_Tabla();
+        this.jchbCentro.setSelected(false);
+        this.jchbLExterno.setSelected(false);
+        this.jchbLInterno.setSelected(false);
+        this.jchbPFrontal.setSelected(false);
+        this.jchbPTracera.setSelected(false);
+        for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+            jpnlDienteCarie.getComponent(i).setVisible(false);
+        }
+        jbtnDienteCarie.setVisible(true);
+        this.jDialog1.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
@@ -3813,7 +3777,7 @@ public class Odontograma extends javax.swing.JFrame {
     private javax.swing.JPanel jpnlPosicionCarie;
     // End of variables declaration//GEN-END:variables
 
-    private void Trastornos(JButton jbtnDiente, JPanel jpnlDiente) {
+private void Trastornos(JButton jbtnDiente, JPanel jpnlDiente) {
         if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
             if (this.jchbCentro.isSelected()) {
                 Posiciones("centro", jbtnDiente, jpnlDiente);
@@ -4388,5 +4352,4 @@ public class Odontograma extends javax.swing.JFrame {
                 break;
         }
     }
-
 }
