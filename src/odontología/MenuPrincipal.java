@@ -37,8 +37,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jbtnRegistrar_Cita = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -67,7 +68,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Registro Pasiente");
+        jMenuItem1.setText("Registro Paciente");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -89,8 +90,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem4.setText("Registro Tratamiento");
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setText("Registrar Cita");
-        jMenu1.add(jMenuItem5);
+        jbtnRegistrar_Cita.setText("Registrar Cita");
+        jbtnRegistrar_Cita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRegistrar_CitaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jbtnRegistrar_Cita);
 
         jMenuItem6.setText("Registrar Especialidad");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +105,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem6);
+
+        jMenuItem7.setText("Registrar Usuario");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
 
         jMenuBar1.add(jMenu1);
 
@@ -136,7 +150,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Registro_Pasiente RP = new Registro_Pasiente();
+        Registro_Paciente RP = new Registro_Paciente();
         RP.setVisible(true);
         this.jDesktopPane1.add(RP);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -158,6 +172,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.jDesktopPane1.add(RegDoc);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        Registrar_Usuario RU = new Registrar_Usuario();
+        RU.setVisible(true);
+        this.jDesktopPane1.add(RU);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jbtnRegistrar_CitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistrar_CitaActionPerformed
+        // TODO add your handling code here:
+        Registrar_Cita RC = new Registrar_Cita();
+        RC.setVisible(true);
+        this.jDesktopPane1.add(RC);
+    }//GEN-LAST:event_jbtnRegistrar_CitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +234,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jbtnRegistrar_Cita;
     // End of variables declaration//GEN-END:variables
 }

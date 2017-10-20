@@ -37,19 +37,18 @@ public class My_Query {
             }
             SQL = SQL.substring(0, SQL.length() - 2);
             SQL = SQL.concat(")");
-            PreparedStatement pst = reg.prepareStatement(SQL);
-            for (int i = 1; i <= Data.length; i++) {
-                pst.setString(i, Data[i - 1]);
+            try (PreparedStatement pst = reg.prepareStatement(SQL)) {
+                for (int i = 1; i <= Data.length; i++) {
+                    pst.setString(i, Data[i - 1]);
+                }
+                int n = pst.executeUpdate();
+                if (n > 0) {
+                    JOptionPane.showMessageDialog(null, "Datos guardados " + Table);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos no guardados " + Table);
+                }
             }
-            int n = pst.executeUpdate();
-            if (n > 0) {
-                JOptionPane.showMessageDialog(null, "Datos guardados "+Table);
-            } else {
-                JOptionPane.showMessageDialog(null, "Datos no guardados "+Table);
-            }
-            pst.close();
         } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
         }
     }
 
@@ -67,7 +66,6 @@ public class My_Query {
                 }
             }
         } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
         }
         if (Id.equals("0")) {
             Id = "1";
@@ -90,15 +88,13 @@ public class My_Query {
                 }
             }
         } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
         }
         return Id;
     }
 
     public static void main(String[] args) {
-        My_Query MQ = new My_Query();
-        int t = MQ.SelectWhereCount("Cedula", "Persona", "40224605036 = Cedula");
-        System.out.println(t);
+        
+        
     }
 
     ArrayList SelectEspecialidad() {
@@ -109,20 +105,51 @@ public class My_Query {
         String SQL;
         try {
             SQL = "Select * from Especialidades";
-            
+
             try (Statement ST = reg.createStatement()) {
                 ResultSet rs = ST.executeQuery(SQL);
                 while (rs.next()) {
-                    cadena=cadena.concat(String.valueOf(rs.getInt("ID_ESPECIALIDAD")));
-                    cadena=cadena.concat("   ").concat(rs.getString("Nombre"));
-                    cadena=cadena.concat("   ").concat(rs.getString("Descripcion"));
+                    cadena = cadena.concat(String.valueOf(rs.getInt("ID_ESPECIALIDAD")));
+                    cadena = cadena.concat("   ").concat(rs.getString("Nombre"));
+                    cadena = cadena.concat("   ").concat(rs.getString("Descripcion"));
                     Data.add(cadena);
                 }
             }
-            
+
         } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
         }
         return Data;
+    }
+
+    public String[] SelectWhereData1(String[] Campos, String persona, String concat) {
+        MySQL_DB_Connection c = new MySQL_DB_Connection();
+        Connection reg = c.getConnection();
+        String[] datos = new String[Campos.length];
+        int te = 1;
+        String SQL;
+        int Id = 0;
+        try {
+            SQL = "SELECT ";
+            for (String Campo : Campos) {
+                SQL = SQL.concat(Campo).concat(", ");
+            }
+            SQL = SQL.substring(0, SQL.length() - 2);
+            SQL = SQL + " FROM odontodb." + persona + " where " + concat;
+
+            System.out.println(SQL);
+            try (Statement ST = reg.createStatement()) {
+                ResultSet rs = ST.executeQuery(SQL);
+                while (rs.next()) {
+                    datos[0] = String.valueOf(rs.getInt(Campos[0]));
+                    datos[1] = rs.getString(Campos[1]);
+                    datos[2] = rs.getString(Campos[2]);
+                }
+            }
+            for (String dato : datos) {
+                System.out.println(dato);
+            }
+        } catch (SQLException sQLException) {
+        }
+        return datos;
     }
 }
