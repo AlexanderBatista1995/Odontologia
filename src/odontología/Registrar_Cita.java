@@ -12,13 +12,19 @@ import javax.swing.JOptionPane;
  * @author Alexander Batista
  */
 public class Registrar_Cita extends javax.swing.JInternalFrame {
-My_Query MQ = new My_Query();
+
+    My_Query MQ = new My_Query();
+
     /**
      * Creates new form Registrar_Cita
      */
     public Registrar_Cita() {
         initComponents();
-        jtxtEMail.setText(MQ.SelectsMaxID("ID_Cita", "cita"));
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_cita", "cita"));
+        if (dat>1) {
+            dat=dat++;
+        }
+        jtxtEMail.setText(String.valueOf(dat));
     }
 
     /**
@@ -488,7 +494,7 @@ My_Query MQ = new My_Query();
             this.jftxfCedula.grabFocus();
         } else {
             if (MQ.SelectWhereCount("Cedula", "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula")) == 1) {
-                String[] datos = {"ID_Persona", "NOMBRE", "APELLIDO", "Seguro", "TELEFONO", "CELULAR"};
+                String[] datos = {"ID_Persona", "NOMBRE", "APELLIDO", "ID_Seguro", "TELEFONO", "CELULAR"};
                 String[] reg = MQ.SelectWhereData1(datos, "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula"));
                 System.out.println(reg.length);
                 this.jtxtNombre.setText(reg[1]);
@@ -522,7 +528,15 @@ My_Query MQ = new My_Query();
                 this.jtxfIdCliente1.setText(reg[0]);
                 this.jftxfTelefono1.setText(reg[3]);
                 this.jftxfCelular1.setText(reg[4]);
-                //hacer select de especialidad
+                String Condicion = " " + jtxfIdCliente1.getText() + " = persona_especialidad.ID_PERSONA and especialidades.ID_ESPECIALIDAD = persona_especialidad.ID_ESPECIALIDAD";
+                String[] datos2 = {"Nombre"};
+                String res = "";
+                String[] reg2 = MQ.SelectWhereData1(datos2, "especialidades, persona_especialidad", Condicion);
+                for (String reg21 : reg2) {
+                    res = res.concat(reg21).concat(", ");
+                }
+                res = res.substring(0, res.length() - 2);
+                this.jtxtApellido3.setText(res);
             } else {
                 JOptionPane.showMessageDialog(this, "Esta cédula no esta en el sistema.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
                 this.jftxfCedula.setText("");
@@ -553,10 +567,9 @@ My_Query MQ = new My_Query();
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos necesarios", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             if (JOptionPane.showConfirmDialog(this, "Está segur@ de que desea grardar?", "Información", JOptionPane.INFORMATION_MESSAGE) == 0) {
-                String[] Orden = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "FECHA_REGISTRO", "CEDULA"};
-                String[] Data = {"1", jtxfIdCliente.getText(), jtxtNombre.getText(), jtxtApellido.getText(), jftxfTelefono.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""),
-                    jftxfCelular.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jtxaDireccion.getText(), jtxtEMail.getText(), jftxfFechaNac.getText(), "2017-10-17", jftxfCedula.getText().replace("-", "")};
-                MQ.inserts(Orden, Data, "Persona");
+                String[] Orden = {"ID_CITA", "FECHA_CITA", "ID_PERSONAC", "ID_PERSONAO", "FECHA_REGISTRO", "OBSERVACIONES"};
+                String[] Data = {this.jtxtEMail.getText(), this.jftxfFechaNac.getText(), this.jtxfIdCliente.getText(), this.jtxfIdCliente1.getText(), "2017-10-20", this.jtxaDireccion.getText()};
+                MQ.inserts(Orden, Data, "cita");
                 Nuevo();
             }
         }
@@ -611,6 +624,28 @@ My_Query MQ = new My_Query();
     // End of variables declaration//GEN-END:variables
 
     private void Nuevo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.jftxfCedula.setText("");
+        this.jftxfCedula1.setText("");
+        this.jftxfCelular.setText("");
+        this.jftxfCelular1.setText("");
+        this.jftxfFechaNac.setText("");
+        this.jftxfTelefono.setText("");
+        this.jftxfTelefono1.setText("");
+        this.jtxaDireccion.setText("");
+        this.jtxfIdCliente.setText("");
+        this.jtxfIdCliente1.setText("");
+        this.jtxtApellido.setText("");
+        this.jtxtApellido1.setText("");
+        this.jtxtApellido2.setText("");
+        this.jtxtApellido3.setText("");
+        this.jtxtEMail.setText("");
+        this.jtxtNombre.setText("");
+        this.jtxtNombre1.setText("");
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_cita", "cita"));
+        if (dat>1) {
+            dat=dat++;
+        }
+        this.jtxfIdCliente.setText(String.valueOf(dat));
+        this.jftxfCedula.grabFocus();
     }
 }

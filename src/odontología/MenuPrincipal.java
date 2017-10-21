@@ -40,9 +40,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jbtnRegistrar_Cita = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
 
@@ -116,15 +116,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu4.setText("Actualizar");
+        jMenuBar1.add(jMenu4);
+
         jMenu3.setText("Odontograma");
 
         jMenuItem15.setText("Seguimiento de Trabajo");
         jMenu3.add(jMenuItem15);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Consultas");
-        jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Ayuda");
 

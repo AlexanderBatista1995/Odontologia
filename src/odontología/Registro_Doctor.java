@@ -26,7 +26,11 @@ public class Registro_Doctor extends javax.swing.JInternalFrame {
     public Registro_Doctor() {
         initComponents();
         jftxfFechaNac.setText("0000-12-31");
-        jtxfIdCliente.setText(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        if (dat>1) {
+            dat=dat++;
+        }
+        jtxfIdCliente.setText(String.valueOf(dat));
         jdflTableEspecialidad.addColumn("No. Especialidad");
         jdflTableEspecialidad.addColumn("Nombre");
         jdflTableEspecialidad.addColumn("Descripción");
@@ -658,8 +662,13 @@ public class Registro_Doctor extends javax.swing.JInternalFrame {
         jTable1.setModel(jdflTableEspecialidad);
         jdflComboEspecialidad.removeAllElements();
         this.jComboBox1.setModel(jdflComboEspecialidad);
-        MQ.SelectsMaxID("ID_PERSONA", "Persona");
-        ArrayList datos = MQ.SelectEspecialidad();
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        if (dat>1) {
+            dat=dat++;
+        }
+        this.jtxfIdCliente.setText(String.valueOf(dat));
+        String[] Columnas = {"ID_Especialidad", "Nombre", "Descripcion"};
+        ArrayList datos = MQ.SelectEspecialidad(Columnas, "Especialidades", "");
         datos.stream().forEach((dato) -> {
             jdflComboEspecialidad.addElement(dato.toString());
         });
@@ -667,7 +676,8 @@ public class Registro_Doctor extends javax.swing.JInternalFrame {
     }
 
     private void llenarCombo() {
-        ArrayList Data = MQ.SelectEspecialidad();
+        String[] Columnas = {"ID_Especialidad", "Nombre", "Descripcion"};
+        ArrayList Data = MQ.SelectEspecialidad(Columnas, "Especialidades", "");
         Data.stream().forEach((Data1) -> {
             jdflComboEspecialidad.addElement(Data1.toString());
         });

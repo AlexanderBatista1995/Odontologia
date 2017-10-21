@@ -20,7 +20,11 @@ public class Registrar_Especialidades extends javax.swing.JInternalFrame {
      */
     public Registrar_Especialidades() {
         initComponents();
-        this.jtxfIdCliente.setText(MQ.SelectsMaxID("ID_ESPECIALIDAD", "ESPECIALIDADES"));
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_ESPECIALIDAD", "ESPECIALIDADES"));
+        if (dat>1) {
+            dat=dat++;
+        }
+        this.jtxfIdCliente.setText(String.valueOf(dat));
         this.jtxtNombre.grabFocus();
     }
 
@@ -207,7 +211,11 @@ public class Registrar_Especialidades extends javax.swing.JInternalFrame {
         this.jtxaDireccion.setText("");
         this.jtxfIdCliente.setText("");
         this.jtxtNombre.setText("");
-        this.jtxfIdCliente.setText(MQ.SelectsMaxID("ID_ESPECIALIDAD", "ESPECIALIDADES"));
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_ESPECIALIDAD", "ESPECIALIDADES"));
+        if (dat>1) {
+            dat=dat++;
+        }
+        this.jtxfIdCliente.setText(String.valueOf(dat));
         this.jtxtNombre.grabFocus();
     }
 }

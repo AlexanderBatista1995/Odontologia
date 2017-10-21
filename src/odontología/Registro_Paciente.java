@@ -5,6 +5,8 @@
  */
 package odontología;
 
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +16,8 @@ import javax.swing.JOptionPane;
 public class Registro_Paciente extends javax.swing.JInternalFrame {
 
     My_Query MQ = new My_Query();
+    DefaultComboBoxModel<String> jcmbRoles = new DefaultComboBoxModel<>();
+    private boolean Duplicada;
 
     /**
      * Creates new form Registro_Pasiente
@@ -21,8 +25,15 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
     public Registro_Paciente() {
         initComponents();
         jftxfFechaNac.setText("0000-12-31");
-        jtxfIdCliente.setText(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        if (dat > 1) {
+            dat = dat++;
+        }
+        jtxfIdCliente.setText(String.valueOf(dat));
         jPanel3.setVisible(false);
+        jComboBox1.setVisible(false);
+        llenarCombo();
+        this.jftxfCedula.grabFocus();
     }
 
     /**
@@ -73,6 +84,7 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setTitle("Registro de Pacientes");
 
@@ -364,7 +376,9 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -379,7 +393,8 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -409,8 +424,6 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Datos Personales");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -421,10 +434,38 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
             this.jftxfCedula.setText("");
             this.jftxfCedula.grabFocus();
         } else {
-            if (MQ.SelectWhereCount("Cedula", "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula")) > 1) {
-                JOptionPane.showMessageDialog(this, "Esta cédula ya esta en el sistema.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-                this.jftxfCedula.setText("");
-                this.jftxfCedula.grabFocus();
+            if (MQ.SelectWhereCount("Cedula", "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula")) > 0) {
+                Duplicada = true;
+                if (JOptionPane.showConfirmDialog(this, "Esta cédula ya esta en el sistema.\nDesea Actualizar los datos.", "Error", JOptionPane.ERROR_MESSAGE) == 0) {
+                    String[] datos = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "ID_SEGURO"};
+                    String[] reg = MQ.SelectWhereData1(datos, "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula"));
+                    jComboBox1.setVisible(true);
+                    jComboBox1.setSelectedIndex(Integer.valueOf(reg[0]) - 1);
+                    this.jtxfIdCliente.setText(reg[1]);
+                    this.jtxtNombre.setText(reg[2]);
+                    this.jtxtApellido.setText(reg[3]);
+                    this.jftxfTelefono.setText(reg[4]);
+                    this.jftxfCelular.setText(reg[5]);
+                    this.jtxaDireccion.setText(reg[6]);
+                    this.jtxtEMail.setText(reg[7]);
+                    this.jftxfFechaNac.setText(reg[8]);
+                    if (!reg[8].isEmpty()) {
+                        this.jCheckBox1.setSelected(true);
+                        this.jPanel3.setVisible(true);
+                        String[] datos2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
+                        String[] reg2 = MQ.SelectWhereData1(datos2, "Seguro", reg[9].concat("= ID_SEGURO"));
+                        this.jtxtSeguroSocial.setText(reg2[0]);
+                        this.jTextField3.setText(reg2[1]);
+                        this.jftxfTelefono1.setText(reg2[2]);
+                        this.jTextField2.setText(reg2[3]);
+                        this.jTextField4.setText(reg2[4]);
+                        this.jTextField5.setText(reg2[5]);
+                    }
+                } else {
+                    Duplicada = false;
+                    this.jftxfCedula.setText("");
+                    this.jftxfCedula.grabFocus();
+                }
             }
         }
     }//GEN-LAST:event_jftxfCedulaFocusLost
@@ -434,15 +475,28 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos necesarios", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             if (JOptionPane.showConfirmDialog(this, "Está segur@ de que desea grardar?", "Información", JOptionPane.INFORMATION_MESSAGE) == 0) {
-                String[] Orden = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "FECHA_REGISTRO", "CEDULA", "ID_SEGURO"};
-                String[] Data = {"1", jtxfIdCliente.getText(), jtxtNombre.getText(), jtxtApellido.getText(), jftxfTelefono.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""),
-                    jftxfCelular.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jtxaDireccion.getText(), jtxtEMail.getText(), jftxfFechaNac.getText(), "2017-10-17", jftxfCedula.getText().replace("-", ""), jtxtSeguroSocial.getText()};
-                MQ.inserts(Orden, Data, "Persona");
-
-                if (this.jCheckBox1.isSelected()==true) {
-                    String[] Orden2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
-                    String[] Data2 = {jtxtSeguroSocial.getText(), jTextField3.getText(), jftxfTelefono1.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jTextField2.getText(), jTextField4.getText(), jTextField5.getText()};
-                    MQ.inserts(Orden2, Data2, "seguro");
+                if (!Duplicada) {
+                    String[] Orden = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "FECHA_REGISTRO", "CEDULA", "ID_SEGURO"};
+                    String[] Data = {"1", jtxfIdCliente.getText(), jtxtNombre.getText(), jtxtApellido.getText(), jftxfTelefono.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""),
+                        jftxfCelular.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jtxaDireccion.getText(), jtxtEMail.getText(), jftxfFechaNac.getText(), "2017-10-17", jftxfCedula.getText().replace("-", ""), jtxtSeguroSocial.getText()};
+                    MQ.inserts(Orden, Data, "Persona");
+                    
+                    if (this.jCheckBox1.isSelected() == true) {
+                        String[] Orden2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
+                        String[] Data2 = {jtxtSeguroSocial.getText(), jTextField3.getText(), jftxfTelefono1.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jTextField2.getText(), jTextField4.getText(), jTextField5.getText()};
+                        MQ.inserts(Orden2, Data2, "seguro");
+                    }
+                } else {
+                    String[] Orden = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "FECHA_REGISTRO", "CEDULA", "ID_SEGURO"};
+                    String[] Data = {"1", jtxfIdCliente.getText(), jtxtNombre.getText(), jtxtApellido.getText(), jftxfTelefono.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""),
+                        jftxfCelular.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jtxaDireccion.getText(), jtxtEMail.getText(), jftxfFechaNac.getText(), "2017-10-17", jftxfCedula.getText().replace("-", ""), jtxtSeguroSocial.getText()};
+                    MQ.Updates(Orden, Data, "Persona",jftxfCedula.getText().replace("-", "")+ "= Cedula");
+                    
+                    if (this.jCheckBox1.isSelected() == true) {
+                        String[] Orden2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
+                        String[] Data2 = {jtxtSeguroSocial.getText(), jTextField3.getText(), jftxfTelefono1.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jTextField2.getText(), jTextField4.getText(), jTextField5.getText()};
+                        MQ.Updates(Orden2, Data2, "seguro", jtxtSeguroSocial.getText()+"= id_seguro");
+                    }
                 }
                 Nuevo();
             }
@@ -478,6 +532,7 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -526,7 +581,25 @@ public class Registro_Paciente extends javax.swing.JInternalFrame {
         this.jftxfCelular.setText("");
         this.jftxfFechaNac.setText("");
         this.jftxfTelefono.setText("");
-        MQ.SelectsMaxID("ID_PERSONA", "Persona");
+        this.jftxfTelefono1.setText("");
+        this.jTextField2.setText("");
+        this.jTextField3.setText("");
+        this.jTextField4.setText("");
+        this.jTextField5.setText("");
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        if (dat > 1) {
+            dat = dat++;
+        }
+        this.jtxfIdCliente.setText(String.valueOf(dat));
         this.jftxfCedula.grabFocus();
+    }
+
+    private void llenarCombo() {
+        String[] Columnas = {"ID_rol", "Nombre", "Descripcion"};
+        ArrayList Data = MQ.SelectEspecialidad(Columnas, "roles", "");
+        Data.stream().forEach((Data1) -> {
+            jcmbRoles.addElement(Data1.toString());
+        });
+        this.jComboBox1.setModel(jcmbRoles);
     }
 }
