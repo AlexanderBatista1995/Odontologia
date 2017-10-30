@@ -1,4 +1,4 @@
-package odontología;
+package odontologia;
 
 import java.awt.Cursor;
 import java.awt.Dimension;

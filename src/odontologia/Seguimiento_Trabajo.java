@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package odontología;
+package odontologia;
 
 /**
  *
  * @author Alexander Batista
  */
-public class Registro_Tratamiento extends javax.swing.JInternalFrame {
+public class Seguimiento_Trabajo extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Registro_Tratamiento
+     * Creates new form Seguimiento_Trabajo
      */
-    public Registro_Tratamiento() {
+    public Seguimiento_Trabajo() {
         initComponents();
     }
 

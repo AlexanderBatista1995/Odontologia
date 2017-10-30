@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package odontología;
+package odontologia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -69,7 +69,10 @@ public class My_Query {
         }
         if (Id.equals("0")) {
             Id = "1";
+        } else {
+            Id=String.valueOf(Integer.valueOf(Id)+1);
         }
+
         return Id;
     }
 
@@ -127,6 +130,7 @@ public class My_Query {
                         }
 
                     }
+                    cadena = cadena.substring(2, cadena.length());
                     Data.add(cadena);
                     cadena = "";
 
@@ -186,7 +190,7 @@ public class My_Query {
         int len = Orden.length;
         String SQL;
         try {
-           
+
             SQL = "update `odontodb`." + Table + " set ";
             for (int i = 0; i < len; i++) {
                 SQL = SQL.concat("`").concat(Orden[i]).concat("` = ").concat("?").concat(", ");
@@ -204,9 +208,8 @@ public class My_Query {
                     JOptionPane.showMessageDialog(null, "Datos no guardados " + Table);
                 }
             }
-                        
+
         } catch (SQLException sQLException) {
-            sQLException.printStackTrace();
         }
     }
 

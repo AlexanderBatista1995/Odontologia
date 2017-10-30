@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package odontología;
+package odontologia;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -27,9 +27,6 @@ public class Registro_Doctor extends javax.swing.JInternalFrame {
         initComponents();
         jftxfFechaNac.setText("0000-12-31");
         int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
-        if (dat>1) {
-            dat=dat++;
-        }
         jtxfIdCliente.setText(String.valueOf(dat));
         jdflTableEspecialidad.addColumn("No. Especialidad");
         jdflTableEspecialidad.addColumn("Nombre");
@@ -663,9 +660,6 @@ public class Registro_Doctor extends javax.swing.JInternalFrame {
         jdflComboEspecialidad.removeAllElements();
         this.jComboBox1.setModel(jdflComboEspecialidad);
         int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
-        if (dat>1) {
-            dat=dat++;
-        }
         this.jtxfIdCliente.setText(String.valueOf(dat));
         String[] Columnas = {"ID_Especialidad", "Nombre", "Descripcion"};
         ArrayList datos = MQ.SelectEspecialidad(Columnas, "Especialidades", "");

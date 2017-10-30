@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package odontología;
+package odontologia;
 
 import javax.swing.JOptionPane;
 
@@ -21,9 +21,7 @@ public class Registrar_Cita extends javax.swing.JInternalFrame {
     public Registrar_Cita() {
         initComponents();
         int dat = Integer.valueOf(MQ.SelectsMaxID("ID_cita", "cita"));
-        if (dat>1) {
-            dat=dat++;
-        }
+        
         jtxtEMail.setText(String.valueOf(dat));
     }
 
@@ -642,9 +640,7 @@ public class Registrar_Cita extends javax.swing.JInternalFrame {
         this.jtxtNombre.setText("");
         this.jtxtNombre1.setText("");
         int dat = Integer.valueOf(MQ.SelectsMaxID("ID_cita", "cita"));
-        if (dat>1) {
-            dat=dat++;
-        }
+        
         this.jtxfIdCliente.setText(String.valueOf(dat));
         this.jftxfCedula.grabFocus();
     }

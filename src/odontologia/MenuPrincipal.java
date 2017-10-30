@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package odontología;
+package odontologia;
 
 import javax.swing.JFrame;
 
@@ -88,6 +88,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Registro Tratamiento");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jbtnRegistrar_Cita.setText("Registrar Cita");
@@ -150,9 +155,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Registro_Paciente RP = new Registro_Paciente();
-        RP.setVisible(true);
-        this.jDesktopPane1.add(RP);
+        Registro_Completo RC = new Registro_Completo();
+        RC.setVisible(true);
+        this.jDesktopPane1.add(RC);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -185,6 +190,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         RC.setVisible(true);
         this.jDesktopPane1.add(RC);
     }//GEN-LAST:event_jbtnRegistrar_CitaActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Registrar_Odontograma RO = new Registrar_Odontograma();
+        RO.setVisible(true);
+        this.jDesktopPane1.add(RO);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

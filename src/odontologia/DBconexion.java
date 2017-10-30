@@ -1,4 +1,4 @@
-package proyecto.i;
+package odontologia;
 
 import java.sql.*;
 

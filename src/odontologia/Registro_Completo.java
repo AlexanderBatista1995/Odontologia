@@ -1,0 +1,5402 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package odontologia;
+
+import java.awt.Dimension;
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Alexander Batista
+ */
+public class Registro_Completo extends javax.swing.JInternalFrame {
+
+    My_Query MQ = new My_Query();
+    private boolean Duplicada;
+    public boolean carie;
+    public boolean Obturacion;
+    public boolean CoronaBuena;
+    public boolean CoronaARealizar;
+    public boolean ConEndodoncia;
+    public boolean NecesitaEndodoncia;
+    public boolean Trauma;
+    public boolean Recurrente;
+    public boolean DienteAusente;
+    public boolean SinErupcionar;
+    public boolean ConSellante;
+    public boolean NecesitaSellante;
+    public boolean ExodonciaRealizada;
+    public boolean ExodonciaIndicada;
+    public boolean Abracion;
+    public boolean Atricion;
+    public boolean NucleoBueno;
+    public boolean NucleoARealizar;
+    public boolean SemiIncluido;
+    public boolean Giroversion;
+    public boolean Provisional;
+    public boolean ResinaFisica;
+    public boolean IonometroDeVidrio;
+    public JPanel jPanel;
+    public JButton jButton;
+    public int cod_diente;
+    public String TraumaAplicado;
+    public String Pos = "";
+    public String Reg_Pos = "";
+    public String Reg_Estado = "";
+    public String Reg_Trauma = "";
+    public String[] Posicion, llenarPos;
+
+    DefaultTableModel jtbmDetalleOdontograma;
+    DefaultTableModel jtbmDetalleCita;
+    Crear crear;
+
+    /**
+     * Creates new form Registro_Completo
+     */
+    public Registro_Completo() {
+        initComponents();
+        ArrayList Data = new ArrayList();
+        jftxfFechaNac.setText("0000-12-31");
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        jtxfIdCliente4.setText(String.valueOf(dat));
+        jPanel5.setVisible(false);
+        jPanel3.setVisible(false);
+        jPanel7.setVisible(false);
+        jPanel11.setVisible(false);
+        this.jftxfCedula.grabFocus();
+        this.jbtnCoronaBuena.setVisible(false);
+        this.jbtnConEndodoncia.setVisible(false);
+        this.jbtnExodonciaRealizada.setVisible(false);
+        this.jbtnNucleoBueno.setVisible(false);
+        this.jbtnConSellante.setVisible(false);
+        this.jbtnNecesitaSellante.setVisible(false);
+        jtbmDetalleOdontograma = new DefaultTableModel();
+        jtbmDetalleOdontograma.addColumn("No. Diente");
+        jtbmDetalleOdontograma.addColumn("Trauma");
+        jtbmDetalleOdontograma.addColumn("Posición");
+        jtbmDetalleOdontograma.addColumn("Estado");
+        jTable1.setModel(jtbmDetalleOdontograma);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(300);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(500);
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(300);
+        reloj1 hora = new reloj1(jlblreloj);
+        hora.start();
+        jtbmDetalleCita = new DefaultTableModel();
+        jtbmDetalleCita.addColumn("No. Cita");
+        jtbmDetalleCita.addColumn("Paciente");
+        jtbmDetalleCita.addColumn("Odontólogo");
+        jtbmDetalleCita.addColumn("Fecha de Cita");
+        jtbmDetalleCita.addColumn("Observaciones");
+        jTable2.setModel(jtbmDetalleCita);
+        jTable2.getColumnModel().getColumn(0).setPreferredWidth(50);
+        jTable2.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jTable2.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jTable2.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTable2.getColumnModel().getColumn(4).setPreferredWidth(300);
+        String[] Campos = {"cita.id_cita", "Persona1.nombre", "Persona2.nombre", "Cita.fecha_cita", "cita.observaciones"};
+        String Condicion = "Cita.id_personac = 1 and persona2.id_persona = cita.id_personao and persona1.id_persona = cita.id_personac";
+        ArrayList Data2 = MQ.SelectEspecialidad(Campos, " persona persona1, persona persona2, cita cita", Condicion);
+        Data2.stream().map((Data21) -> Data21.toString().split("   ")).forEach(new Consumer() {
+            @Override
+            public void accept(Object retur) {
+                Registro_Completo.this.jtbmDetalleCita.addRow((Object[]) retur);
+            }
+        });
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jDialog1 = new javax.swing.JDialog();
+        jpnlPosicionCarie = new javax.swing.JPanel();
+        jchbCentro = new javax.swing.JCheckBox();
+        jchbLInterno = new javax.swing.JCheckBox();
+        jchbLExterno = new javax.swing.JCheckBox();
+        jchbPFrontal = new javax.swing.JCheckBox();
+        jchbPTracera = new javax.swing.JCheckBox();
+        jButton5 = new javax.swing.JButton();
+        jpnlDienteCarie = new javax.swing.JPanel();
+        jbtnDienteCarie = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jtxfIdCliente4 = new javax.swing.JTextField();
+        jlblreloj = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jtxtNombre4 = new javax.swing.JTextField();
+        jtxtApellido4 = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtxaDireccion4 = new javax.swing.JTextArea();
+        jLabel40 = new javax.swing.JLabel();
+        jtxtEMail4 = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jftxfTelefono = new javax.swing.JFormattedTextField();
+        jftxfCelular = new javax.swing.JFormattedTextField();
+        jftxfCedula = new javax.swing.JFormattedTextField();
+        jftxfFechaNac = new javax.swing.JFormattedTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jPanel8 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        jtxtSeguroSocial1 = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jftxfTelefono2 = new javax.swing.JFormattedTextField();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jpnlOdontograma = new javax.swing.JPanel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(2, 0), new java.awt.Dimension(2, 0), new java.awt.Dimension(2, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(2, 0), new java.awt.Dimension(2, 0), new java.awt.Dimension(2, 32767));
+        jpnlDiente11_18 = new javax.swing.JPanel();
+        jbtnDiente11 = new javax.swing.JButton();
+        jlblDiente11 = new javax.swing.JLabel();
+        jbtnDiente12 = new javax.swing.JButton();
+        jlblDiente12 = new javax.swing.JLabel();
+        jbtnDiente13 = new javax.swing.JButton();
+        jlblDiente13 = new javax.swing.JLabel();
+        jbtnDiente14 = new javax.swing.JButton();
+        jlblDiente14 = new javax.swing.JLabel();
+        jbtnDiente15 = new javax.swing.JButton();
+        jlblDiente15 = new javax.swing.JLabel();
+        jbtnDiente16 = new javax.swing.JButton();
+        jlblDiente16 = new javax.swing.JLabel();
+        jbtnDiente17 = new javax.swing.JButton();
+        jlblDiente17 = new javax.swing.JLabel();
+        jbtnDiente18 = new javax.swing.JButton();
+        jlblDiente18 = new javax.swing.JLabel();
+        jpnlDiente51_55 = new javax.swing.JPanel();
+        jbtnDiente51 = new javax.swing.JButton();
+        jlblDiente51 = new javax.swing.JLabel();
+        jbtnDiente52 = new javax.swing.JButton();
+        jlblDiente52 = new javax.swing.JLabel();
+        jbtnDiente53 = new javax.swing.JButton();
+        jlblDiente53 = new javax.swing.JLabel();
+        jbtnDiente54 = new javax.swing.JButton();
+        jlblDiente54 = new javax.swing.JLabel();
+        jbtnDiente55 = new javax.swing.JButton();
+        jlblDiente55 = new javax.swing.JLabel();
+        jpnlDiente81_85 = new javax.swing.JPanel();
+        jbtnDiente81 = new javax.swing.JButton();
+        jlblDiente81 = new javax.swing.JLabel();
+        jbtnDiente82 = new javax.swing.JButton();
+        jlblDiente82 = new javax.swing.JLabel();
+        jbtnDiente83 = new javax.swing.JButton();
+        jlblDiente83 = new javax.swing.JLabel();
+        jbtnDiente84 = new javax.swing.JButton();
+        jlblDiente84 = new javax.swing.JLabel();
+        jbtnDiente85 = new javax.swing.JButton();
+        jlblDiente85 = new javax.swing.JLabel();
+        jpnlDiente41_48 = new javax.swing.JPanel();
+        jbtnDiente41 = new javax.swing.JButton();
+        jlblDiente41 = new javax.swing.JLabel();
+        jbtnDiente42 = new javax.swing.JButton();
+        jlblDiente42 = new javax.swing.JLabel();
+        jbtnDiente43 = new javax.swing.JButton();
+        jlblDiente43 = new javax.swing.JLabel();
+        jbtnDiente44 = new javax.swing.JButton();
+        jlblDiente44 = new javax.swing.JLabel();
+        jbtnDiente45 = new javax.swing.JButton();
+        jlblDiente45 = new javax.swing.JLabel();
+        jbtnDiente46 = new javax.swing.JButton();
+        jlblDiente46 = new javax.swing.JLabel();
+        jbtnDiente47 = new javax.swing.JButton();
+        jlblDiente47 = new javax.swing.JLabel();
+        jbtnDiente48 = new javax.swing.JButton();
+        jlblDiente48 = new javax.swing.JLabel();
+        jpnlDiente21_28 = new javax.swing.JPanel();
+        jbtnDiente28 = new javax.swing.JButton();
+        jlblDiente28 = new javax.swing.JLabel();
+        jbtnDiente27 = new javax.swing.JButton();
+        jlblDiente27 = new javax.swing.JLabel();
+        jbtnDiente26 = new javax.swing.JButton();
+        jlblDiente26 = new javax.swing.JLabel();
+        jbtnDiente25 = new javax.swing.JButton();
+        jlblDiente25 = new javax.swing.JLabel();
+        jbtnDiente24 = new javax.swing.JButton();
+        jlblDiente24 = new javax.swing.JLabel();
+        jbtnDiente23 = new javax.swing.JButton();
+        jlblDiente23 = new javax.swing.JLabel();
+        jbtnDiente22 = new javax.swing.JButton();
+        jlblDiente22 = new javax.swing.JLabel();
+        jbtnDiente21 = new javax.swing.JButton();
+        jlblDiente21 = new javax.swing.JLabel();
+        jpnlDiente61_65 = new javax.swing.JPanel();
+        jbtnDiente65 = new javax.swing.JButton();
+        jlblDiente65 = new javax.swing.JLabel();
+        jbtnDiente64 = new javax.swing.JButton();
+        jlblDiente64 = new javax.swing.JLabel();
+        jbtnDiente63 = new javax.swing.JButton();
+        jlblDiente63 = new javax.swing.JLabel();
+        jbtnDiente62 = new javax.swing.JButton();
+        jlblDiente62 = new javax.swing.JLabel();
+        jbtnDiente61 = new javax.swing.JButton();
+        jlblDiente61 = new javax.swing.JLabel();
+        jpnlDiente71_75 = new javax.swing.JPanel();
+        jbtnDiente75 = new javax.swing.JButton();
+        jlblDiente75 = new javax.swing.JLabel();
+        jbtnDiente74 = new javax.swing.JButton();
+        jlblDiente74 = new javax.swing.JLabel();
+        jbtnDiente73 = new javax.swing.JButton();
+        jlblDiente73 = new javax.swing.JLabel();
+        jbtnDiente72 = new javax.swing.JButton();
+        jlblDiente72 = new javax.swing.JLabel();
+        jbtnDiente71 = new javax.swing.JButton();
+        jlblDiente71 = new javax.swing.JLabel();
+        jpnlDiente31_38 = new javax.swing.JPanel();
+        jbtnDiente38 = new javax.swing.JButton();
+        jlblDiente38 = new javax.swing.JLabel();
+        jbtnDiente37 = new javax.swing.JButton();
+        jlblDiente37 = new javax.swing.JLabel();
+        jbtnDiente36 = new javax.swing.JButton();
+        jlblDiente36 = new javax.swing.JLabel();
+        jbtnDiente35 = new javax.swing.JButton();
+        jlblDiente35 = new javax.swing.JLabel();
+        jbtnDiente34 = new javax.swing.JButton();
+        jlblDiente34 = new javax.swing.JLabel();
+        jbtnDiente33 = new javax.swing.JButton();
+        jlblDiente33 = new javax.swing.JLabel();
+        jbtnDiente32 = new javax.swing.JButton();
+        jlblDiente32 = new javax.swing.JLabel();
+        jbtnDiente31 = new javax.swing.JButton();
+        jlblDiente31 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jbtnCarie = new javax.swing.JButton();
+        jbtnObturacion = new javax.swing.JButton();
+        jbtnCoronaBuena = new javax.swing.JButton();
+        jbtnCoronaARealizar = new javax.swing.JButton();
+        jbtnConEndodoncia = new javax.swing.JButton();
+        jbtnNecesitaEndodoncia = new javax.swing.JButton();
+        jbtnTrauma = new javax.swing.JButton();
+        jbtnRecurrente = new javax.swing.JButton();
+        jbtnDienteAusente = new javax.swing.JButton();
+        jbtnSinErupcionar = new javax.swing.JButton();
+        jbtnConSellante = new javax.swing.JButton();
+        jbtnNecesitaSellante = new javax.swing.JButton();
+        jbtnExodonciaRealizada = new javax.swing.JButton();
+        jbtnExodonciaIndicada = new javax.swing.JButton();
+        jbtnAbrasion = new javax.swing.JButton();
+        jbtnAtricion = new javax.swing.JButton();
+        jbtnNucleoBueno = new javax.swing.JButton();
+        jbtnNucleoARealizar = new javax.swing.JButton();
+        jbtnSemiIncluido = new javax.swing.JButton();
+        jbtnGiroversion = new javax.swing.JButton();
+        jbtnProvisional = new javax.swing.JButton();
+        jbtnResinaFisica = new javax.swing.JButton();
+        jbtnIonometroDeVidrio = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jftxfFechaNac1 = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jtxtEMail = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtxaDireccion = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jtxfIdCliente1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jtxtNombre1 = new javax.swing.JTextField();
+        jtxtApellido1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jftxfTelefono1 = new javax.swing.JFormattedTextField();
+        jftxfCelular1 = new javax.swing.JFormattedTextField();
+        jftxfCedula1 = new javax.swing.JFormattedTextField();
+        jtxtApellido3 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+
+        jpnlPosicionCarie.setBorder(javax.swing.BorderFactory.createTitledBorder("Posicion del Trauma"));
+
+        jchbCentro.setText("Centro");
+        jchbCentro.setName("jchbCentro"); // NOI18N
+        jchbCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchbCentroActionPerformed(evt);
+            }
+        });
+
+        jchbLInterno.setText("Lateral Interno");
+        jchbLInterno.setName("jchbLInterno"); // NOI18N
+        jchbLInterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchbLInternoActionPerformed(evt);
+            }
+        });
+
+        jchbLExterno.setText("Lateral Externo");
+        jchbLExterno.setName("jchbLExterno"); // NOI18N
+        jchbLExterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchbLExternoActionPerformed(evt);
+            }
+        });
+
+        jchbPFrontal.setText("Parte Frontal");
+        jchbPFrontal.setName("jchbPFrontal"); // NOI18N
+        jchbPFrontal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchbPFrontalActionPerformed(evt);
+            }
+        });
+
+        jchbPTracera.setText("Parte Tracera");
+        jchbPTracera.setName("jchbPTracera"); // NOI18N
+        jchbPTracera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchbPTraceraActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Registrar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnlPosicionCarieLayout = new javax.swing.GroupLayout(jpnlPosicionCarie);
+        jpnlPosicionCarie.setLayout(jpnlPosicionCarieLayout);
+        jpnlPosicionCarieLayout.setHorizontalGroup(
+            jpnlPosicionCarieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlPosicionCarieLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jpnlPosicionCarieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jchbPTracera)
+                    .addComponent(jchbPFrontal)
+                    .addComponent(jchbLExterno)
+                    .addComponent(jchbLInterno)
+                    .addComponent(jchbCentro))
+                .addContainerGap(179, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlPosicionCarieLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(55, 55, 55))
+        );
+        jpnlPosicionCarieLayout.setVerticalGroup(
+            jpnlPosicionCarieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlPosicionCarieLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jchbCentro)
+                .addGap(10, 10, 10)
+                .addComponent(jchbLInterno)
+                .addGap(10, 10, 10)
+                .addComponent(jchbLExterno)
+                .addGap(10, 10, 10)
+                .addComponent(jchbPFrontal)
+                .addGap(10, 10, 10)
+                .addComponent(jchbPTracera)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnlDienteCarie.setBorder(javax.swing.BorderFactory.createTitledBorder("Diente"));
+
+        jbtnDienteCarie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDienteCarie.setBorderPainted(false);
+        jbtnDienteCarie.setContentAreaFilled(false);
+        jbtnDienteCarie.setPreferredSize(new java.awt.Dimension(36, 36));
+
+        javax.swing.GroupLayout jpnlDienteCarieLayout = new javax.swing.GroupLayout(jpnlDienteCarie);
+        jpnlDienteCarie.setLayout(jpnlDienteCarieLayout);
+        jpnlDienteCarieLayout.setHorizontalGroup(
+            jpnlDienteCarieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDienteCarieLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jbtnDienteCarie, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+        );
+        jpnlDienteCarieLayout.setVerticalGroup(
+            jpnlDienteCarieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDienteCarieLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jbtnDienteCarie, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpnlDienteCarie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jpnlPosicionCarie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jpnlDienteCarie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnlPosicionCarie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        setTitle("Registros de Pacientes y Trabajos");
+
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Personales"));
+
+        jLabel33.setText("No. Cliente:");
+
+        jtxfIdCliente4.setToolTipText("Codigo único del paciente");
+
+        jLabel35.setText("Nombre:");
+
+        jLabel36.setText("Apellido:");
+
+        jtxtNombre4.setToolTipText("Primer y segundo nombre del paciente");
+
+        jtxtApellido4.setToolTipText("Apellio/s del paciente");
+
+        jLabel37.setText("Teléfono:");
+
+        jLabel38.setText("Celular:");
+
+        jLabel39.setText("Dirección:");
+
+        jtxaDireccion4.setColumns(20);
+        jtxaDireccion4.setLineWrap(true);
+        jtxaDireccion4.setRows(5);
+        jtxaDireccion4.setToolTipText("Dirección del paciente (Calle-no. casa-sector-municipio-provincia-codigo postal)");
+        jtxaDireccion4.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(jtxaDireccion4);
+
+        jLabel40.setText("E-Mail:");
+
+        jtxtEMail4.setToolTipText("Correo electronico del paciente");
+        jtxtEMail4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtEMail4FocusLost(evt);
+            }
+        });
+
+        jLabel41.setText("Fecha de Nacimiento:");
+
+        jLabel42.setText("Cédula:");
+
+        try {
+            jftxfTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfTelefono.setToolTipText("Teléfono de contacto (Doméstico)");
+
+        try {
+            jftxfCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfCelular.setToolTipText("Celular del paciente (Personal)");
+
+        try {
+            jftxfCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-#######-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfCedula.setToolTipText("Cédula del paciente. No puede estar duplicada.");
+        jftxfCedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jftxfCedulaFocusLost(evt);
+            }
+        });
+
+        try {
+            jftxfFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfFechaNac.setToolTipText("Fecha de Nacimiento del paciente en el formato YYYY-MM-DD");
+
+        jCheckBox1.setText("Tiene Seguro");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jftxfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jftxfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jlblreloj, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtxfIdCliente4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jftxfCedula))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel40))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5)
+                                    .addComponent(jtxtEMail4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel35)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtxtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel36)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtxtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 4, Short.MAX_VALUE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jftxfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox1)))))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jlblreloj, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(jtxfIdCliente4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel42)
+                    .addComponent(jftxfCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(jtxtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(jtxtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel38)
+                    .addComponent(jftxfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jftxfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel39)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(jtxtEMail4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(jftxfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Nuevo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Guardar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Seguro Social"));
+        jPanel11.setPreferredSize(new java.awt.Dimension(372, 298));
+
+        jLabel49.setText("No. Seguro:");
+
+        jLabel50.setText("Nombre del Seguro:");
+
+        jLabel51.setText("Número de Póliza:");
+
+        try {
+            jftxfTelefono2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfTelefono2.setToolTipText("Teléfono de contacto (Doméstico)");
+
+        jLabel52.setText("Teléfono:");
+
+        jLabel53.setText("Número de Grupo:");
+
+        jLabel54.setText("Seguro Social:");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel52)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jftxfTelefono2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel11Layout.createSequentialGroup()
+                            .addComponent(jLabel49)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jtxtSeguroSocial1))
+                        .addGroup(jPanel11Layout.createSequentialGroup()
+                            .addComponent(jLabel50)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel54)
+                        .addGap(24, 24, 24)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                            .addComponent(jLabel51)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                            .addComponent(jLabel53)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(jtxtSeguroSocial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel50)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel52)
+                    .addComponent(jftxfTelefono2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel53)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(475, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(266, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Datos Personales", jPanel4);
+
+        jpnlOdontograma.setBackground(new java.awt.Color(255, 255, 255));
+        jpnlOdontograma.setBorder(javax.swing.BorderFactory.createTitledBorder("Diente"));
+
+        filler1.setBackground(new java.awt.Color(0, 0, 0));
+        filler1.setOpaque(true);
+
+        filler2.setBackground(new java.awt.Color(102, 102, 102));
+        filler2.setOpaque(true);
+
+        filler3.setBackground(new java.awt.Color(102, 102, 102));
+        filler3.setOpaque(true);
+
+        jpnlDiente11_18.setOpaque(false);
+
+        jbtnDiente11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente11.setBorderPainted(false);
+        jbtnDiente11.setContentAreaFilled(false);
+        jbtnDiente11.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente11.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente11.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente11ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente11.setText("11");
+
+        jbtnDiente12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente12.setBorderPainted(false);
+        jbtnDiente12.setContentAreaFilled(false);
+        jbtnDiente12.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente12.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente12.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente12ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente12.setText("12");
+
+        jbtnDiente13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente13.setBorderPainted(false);
+        jbtnDiente13.setContentAreaFilled(false);
+        jbtnDiente13.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente13.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente13.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente13ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente13.setText("13");
+
+        jbtnDiente14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente14.setBorderPainted(false);
+        jbtnDiente14.setContentAreaFilled(false);
+        jbtnDiente14.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente14.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente14.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente14ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente14.setText("14");
+
+        jbtnDiente15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente15.setBorderPainted(false);
+        jbtnDiente15.setContentAreaFilled(false);
+        jbtnDiente15.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente15.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente15.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente15ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente15.setText("15");
+
+        jbtnDiente16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente16.setBorderPainted(false);
+        jbtnDiente16.setContentAreaFilled(false);
+        jbtnDiente16.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente16.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente16.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente16ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente16.setText("16");
+
+        jbtnDiente17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente17.setBorderPainted(false);
+        jbtnDiente17.setContentAreaFilled(false);
+        jbtnDiente17.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente17.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente17.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente17ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente17.setText("17");
+
+        jbtnDiente18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente18.setBorderPainted(false);
+        jbtnDiente18.setContentAreaFilled(false);
+        jbtnDiente18.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente18.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente18.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente18ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente18.setText("18");
+
+        javax.swing.GroupLayout jpnlDiente11_18Layout = new javax.swing.GroupLayout(jpnlDiente11_18);
+        jpnlDiente11_18.setLayout(jpnlDiente11_18Layout);
+        jpnlDiente11_18Layout.setHorizontalGroup(
+            jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente18)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente17)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente16)
+                        .addGap(11, 11, 11)))
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente15)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente14)
+                        .addGap(11, 11, 11)))
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente13)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente12)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente11)
+                        .addGap(11, 11, 11))
+                    .addComponent(jbtnDiente11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jpnlDiente11_18Layout.setVerticalGroup(
+            jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente11_18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente17)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente18)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente11)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente12)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente13)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente14)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente15)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente11_18Layout.createSequentialGroup()
+                        .addComponent(jlblDiente16)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+
+        jpnlDiente51_55.setOpaque(false);
+
+        jbtnDiente51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente51.setBorderPainted(false);
+        jbtnDiente51.setContentAreaFilled(false);
+        jbtnDiente51.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnDiente51.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente51.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente51.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente51ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente51.setText("51");
+
+        jbtnDiente52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente52.setBorderPainted(false);
+        jbtnDiente52.setContentAreaFilled(false);
+        jbtnDiente52.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnDiente52.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente52.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente52.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente52ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente52.setText("52");
+
+        jbtnDiente53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente53.setBorderPainted(false);
+        jbtnDiente53.setContentAreaFilled(false);
+        jbtnDiente53.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnDiente53.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente53.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente53.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente53ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente53.setText("53");
+
+        jbtnDiente54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente54.setBorderPainted(false);
+        jbtnDiente54.setContentAreaFilled(false);
+        jbtnDiente54.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnDiente54.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente54.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente54.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente54ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente54.setText("54");
+
+        jbtnDiente55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente55.setBorderPainted(false);
+        jbtnDiente55.setContentAreaFilled(false);
+        jbtnDiente55.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnDiente55.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente55.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente55.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente55ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente55.setText("55");
+
+        javax.swing.GroupLayout jpnlDiente51_55Layout = new javax.swing.GroupLayout(jpnlDiente51_55);
+        jpnlDiente51_55.setLayout(jpnlDiente51_55Layout);
+        jpnlDiente51_55Layout.setHorizontalGroup(
+            jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente51_55Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente55)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente54)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente53)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente52)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente51)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10))
+        );
+        jpnlDiente51_55Layout.setVerticalGroup(
+            jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente51_55Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente51_55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente55)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente54)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente53)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente52)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente51_55Layout.createSequentialGroup()
+                        .addComponent(jlblDiente51)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+
+        jpnlDiente81_85.setOpaque(false);
+
+        jbtnDiente81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente81.setBorderPainted(false);
+        jbtnDiente81.setContentAreaFilled(false);
+        jbtnDiente81.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente81.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente81.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente81.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente81ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente81.setText("81");
+
+        jbtnDiente82.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente82.setBorderPainted(false);
+        jbtnDiente82.setContentAreaFilled(false);
+        jbtnDiente82.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente82.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente82.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente82.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente82ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente82.setText("82");
+
+        jbtnDiente83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente83.setBorderPainted(false);
+        jbtnDiente83.setContentAreaFilled(false);
+        jbtnDiente83.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente83.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente83.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente83.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente83ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente83.setText("83");
+
+        jbtnDiente84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente84.setBorderPainted(false);
+        jbtnDiente84.setContentAreaFilled(false);
+        jbtnDiente84.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente84.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente84.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente84.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente84ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente84.setText("84");
+
+        jbtnDiente85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente85.setBorderPainted(false);
+        jbtnDiente85.setContentAreaFilled(false);
+        jbtnDiente85.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente85.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente85.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente85.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente85ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente85.setText("85");
+
+        javax.swing.GroupLayout jpnlDiente81_85Layout = new javax.swing.GroupLayout(jpnlDiente81_85);
+        jpnlDiente81_85.setLayout(jpnlDiente81_85Layout);
+        jpnlDiente81_85Layout.setHorizontalGroup(
+            jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente81_85Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente85)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente84)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente83)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente82)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente81)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10))
+        );
+        jpnlDiente81_85Layout.setVerticalGroup(
+            jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente81_85Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente81_85Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente85)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente84)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente83)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente82)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente81_85Layout.createSequentialGroup()
+                        .addComponent(jlblDiente81)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnlDiente41_48.setOpaque(false);
+
+        jbtnDiente41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente41.setBorderPainted(false);
+        jbtnDiente41.setContentAreaFilled(false);
+        jbtnDiente41.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente41.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente41.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente41ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente41.setText("41");
+
+        jbtnDiente42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente42.setBorderPainted(false);
+        jbtnDiente42.setContentAreaFilled(false);
+        jbtnDiente42.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente42.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente42.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente42ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente42.setText("42");
+
+        jbtnDiente43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente43.setBorderPainted(false);
+        jbtnDiente43.setContentAreaFilled(false);
+        jbtnDiente43.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente43.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente43.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente43ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente43.setText("43");
+
+        jbtnDiente44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente44.setBorderPainted(false);
+        jbtnDiente44.setContentAreaFilled(false);
+        jbtnDiente44.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente44.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente44.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente44ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente44.setText("44");
+
+        jbtnDiente45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente45.setBorderPainted(false);
+        jbtnDiente45.setContentAreaFilled(false);
+        jbtnDiente45.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente45.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente45.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente45ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente45.setText("45");
+
+        jbtnDiente46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente46.setBorderPainted(false);
+        jbtnDiente46.setContentAreaFilled(false);
+        jbtnDiente46.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente46.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente46.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente46ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente46.setText("46");
+
+        jbtnDiente47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente47.setBorderPainted(false);
+        jbtnDiente47.setContentAreaFilled(false);
+        jbtnDiente47.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente47.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente47.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente47ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente47.setText("47");
+
+        jbtnDiente48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente48.setBorderPainted(false);
+        jbtnDiente48.setContentAreaFilled(false);
+        jbtnDiente48.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente48.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente48.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente48ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente48.setText("48");
+
+        javax.swing.GroupLayout jpnlDiente41_48Layout = new javax.swing.GroupLayout(jpnlDiente41_48);
+        jpnlDiente41_48.setLayout(jpnlDiente41_48Layout);
+        jpnlDiente41_48Layout.setHorizontalGroup(
+            jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente48)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente47)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente46)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente45)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente44)
+                        .addGap(11, 11, 11)))
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente43)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente42)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente41)
+                        .addGap(11, 11, 11))
+                    .addComponent(jbtnDiente41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jpnlDiente41_48Layout.setVerticalGroup(
+            jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente41_48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente47)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente48)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente41)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente42)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente43)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente45)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                            .addComponent(jlblDiente46)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpnlDiente41_48Layout.createSequentialGroup()
+                        .addComponent(jlblDiente44)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtnDiente44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+
+        jpnlDiente21_28.setOpaque(false);
+
+        jbtnDiente28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente28.setBorderPainted(false);
+        jbtnDiente28.setContentAreaFilled(false);
+        jbtnDiente28.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente28.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente28.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente28ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente28.setText("28");
+
+        jbtnDiente27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente27.setBorderPainted(false);
+        jbtnDiente27.setContentAreaFilled(false);
+        jbtnDiente27.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente27.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente27.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente27ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente27.setText("27");
+
+        jbtnDiente26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente26.setBorderPainted(false);
+        jbtnDiente26.setContentAreaFilled(false);
+        jbtnDiente26.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente26.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente26.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente26ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente26.setText("26");
+
+        jbtnDiente25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente25.setBorderPainted(false);
+        jbtnDiente25.setContentAreaFilled(false);
+        jbtnDiente25.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente25.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente25.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente25ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente25.setText("25");
+
+        jbtnDiente24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente24.setBorderPainted(false);
+        jbtnDiente24.setContentAreaFilled(false);
+        jbtnDiente24.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente24.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente24.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente24ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente24.setText("24");
+
+        jbtnDiente23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente23.setBorderPainted(false);
+        jbtnDiente23.setContentAreaFilled(false);
+        jbtnDiente23.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente23.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente23.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente23ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente23.setText("23");
+
+        jbtnDiente22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente22.setBorderPainted(false);
+        jbtnDiente22.setContentAreaFilled(false);
+        jbtnDiente22.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente22.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente22.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente22ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente22.setText("22");
+
+        jbtnDiente21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente21.setBorderPainted(false);
+        jbtnDiente21.setContentAreaFilled(false);
+        jbtnDiente21.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente21.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente21.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente21ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente21.setText("21");
+
+        javax.swing.GroupLayout jpnlDiente21_28Layout = new javax.swing.GroupLayout(jpnlDiente21_28);
+        jpnlDiente21_28.setLayout(jpnlDiente21_28Layout);
+        jpnlDiente21_28Layout.setHorizontalGroup(
+            jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente21)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente22)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente23)
+                        .addGap(11, 11, 11)))
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente24)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente25)
+                        .addGap(11, 11, 11)))
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente26)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente27)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente28)
+                        .addGap(11, 11, 11))
+                    .addComponent(jbtnDiente28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jpnlDiente21_28Layout.setVerticalGroup(
+            jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente21_28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente22)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente21)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente28)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente27)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente26)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente25)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente24)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente21_28Layout.createSequentialGroup()
+                        .addComponent(jlblDiente23)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+
+        jpnlDiente61_65.setOpaque(false);
+
+        jbtnDiente65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente65.setBorderPainted(false);
+        jbtnDiente65.setContentAreaFilled(false);
+        jbtnDiente65.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente65.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente65.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente65.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente65ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente65.setText("65");
+
+        jbtnDiente64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente64.setBorderPainted(false);
+        jbtnDiente64.setContentAreaFilled(false);
+        jbtnDiente64.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente64.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente64.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente64ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente64.setText("64");
+
+        jbtnDiente63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente63.setBorderPainted(false);
+        jbtnDiente63.setContentAreaFilled(false);
+        jbtnDiente63.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente63.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente63.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente63ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente63.setText("63");
+
+        jbtnDiente62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente62.setBorderPainted(false);
+        jbtnDiente62.setContentAreaFilled(false);
+        jbtnDiente62.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente62.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente62.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente62.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente62ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente62.setText("62");
+
+        jbtnDiente61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente61.setBorderPainted(false);
+        jbtnDiente61.setContentAreaFilled(false);
+        jbtnDiente61.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente61.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente61.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente61ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente61.setText("61");
+
+        javax.swing.GroupLayout jpnlDiente61_65Layout = new javax.swing.GroupLayout(jpnlDiente61_65);
+        jpnlDiente61_65.setLayout(jpnlDiente61_65Layout);
+        jpnlDiente61_65Layout.setHorizontalGroup(
+            jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente61_65Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente61)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente62)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente63)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente64)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente65)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10))
+        );
+        jpnlDiente61_65Layout.setVerticalGroup(
+            jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente61_65Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente61_65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente61)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente62)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente63)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente64)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente61_65Layout.createSequentialGroup()
+                        .addComponent(jlblDiente65)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+
+        jpnlDiente71_75.setOpaque(false);
+
+        jbtnDiente75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente75.setBorderPainted(false);
+        jbtnDiente75.setContentAreaFilled(false);
+        jbtnDiente75.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente75.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente75.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente75ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente75.setText("75");
+
+        jbtnDiente74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente74.setBorderPainted(false);
+        jbtnDiente74.setContentAreaFilled(false);
+        jbtnDiente74.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente74.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente74.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente74.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente74ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente74.setText("74");
+
+        jbtnDiente73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente73.setBorderPainted(false);
+        jbtnDiente73.setContentAreaFilled(false);
+        jbtnDiente73.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente73.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente73.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente73.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente73ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente73.setText("73");
+
+        jbtnDiente72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente72.setBorderPainted(false);
+        jbtnDiente72.setContentAreaFilled(false);
+        jbtnDiente72.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente72.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente72.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente72ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente72.setText("72");
+
+        jbtnDiente71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente71.setBorderPainted(false);
+        jbtnDiente71.setContentAreaFilled(false);
+        jbtnDiente71.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente71.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente71.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente71ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente71.setText("71");
+
+        javax.swing.GroupLayout jpnlDiente71_75Layout = new javax.swing.GroupLayout(jpnlDiente71_75);
+        jpnlDiente71_75.setLayout(jpnlDiente71_75Layout);
+        jpnlDiente71_75Layout.setHorizontalGroup(
+            jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente71_75Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente71)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente72)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente73)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente74)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente75)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10))
+        );
+        jpnlDiente71_75Layout.setVerticalGroup(
+            jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente71_75Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente71_75Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente71)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente72)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente73)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente74)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlDiente71_75Layout.createSequentialGroup()
+                        .addComponent(jlblDiente75)
+                        .addGap(5, 5, 5)
+                        .addComponent(jbtnDiente75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpnlDiente31_38.setOpaque(false);
+
+        jbtnDiente38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente38.setBorderPainted(false);
+        jbtnDiente38.setContentAreaFilled(false);
+        jbtnDiente38.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente38.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente38.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente38ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente38.setText("38");
+
+        jbtnDiente37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente37.setBorderPainted(false);
+        jbtnDiente37.setContentAreaFilled(false);
+        jbtnDiente37.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente37.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente37.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente37ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente37.setText("37");
+
+        jbtnDiente36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente36.setBorderPainted(false);
+        jbtnDiente36.setContentAreaFilled(false);
+        jbtnDiente36.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente36.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente36.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente36ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente36.setText("36");
+
+        jbtnDiente35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente35.setBorderPainted(false);
+        jbtnDiente35.setContentAreaFilled(false);
+        jbtnDiente35.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente35.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente35.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente35ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente35.setText("35");
+
+        jbtnDiente34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente34.setBorderPainted(false);
+        jbtnDiente34.setContentAreaFilled(false);
+        jbtnDiente34.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente34.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente34.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente34ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente34.setText("34");
+
+        jbtnDiente33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente33.setBorderPainted(false);
+        jbtnDiente33.setContentAreaFilled(false);
+        jbtnDiente33.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente33.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente33.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente33ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente33.setText("33");
+
+        jbtnDiente32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente32.setBorderPainted(false);
+        jbtnDiente32.setContentAreaFilled(false);
+        jbtnDiente32.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente32.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente32.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente32ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente32.setText("32");
+
+        jbtnDiente31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Diente.png"))); // NOI18N
+        jbtnDiente31.setBorderPainted(false);
+        jbtnDiente31.setContentAreaFilled(false);
+        jbtnDiente31.setMaximumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente31.setMinimumSize(new java.awt.Dimension(36, 36));
+        jbtnDiente31.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbtnDiente31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDiente31ActionPerformed(evt);
+            }
+        });
+
+        jlblDiente31.setText("31");
+
+        javax.swing.GroupLayout jpnlDiente31_38Layout = new javax.swing.GroupLayout(jpnlDiente31_38);
+        jpnlDiente31_38.setLayout(jpnlDiente31_38Layout);
+        jpnlDiente31_38Layout.setHorizontalGroup(
+            jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente31)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente32)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente33)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente34)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente35)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente36)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnDiente37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente37)
+                        .addGap(11, 11, 11)))
+                .addGap(10, 10, 10)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente38)
+                        .addGap(11, 11, 11))
+                    .addComponent(jbtnDiente38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jpnlDiente31_38Layout.setVerticalGroup(
+            jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpnlDiente31_38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente32)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente31)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente38)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente37)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente36)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente34)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                            .addComponent(jlblDiente33)
+                            .addGap(5, 5, 5)
+                            .addComponent(jbtnDiente33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpnlDiente31_38Layout.createSequentialGroup()
+                        .addComponent(jlblDiente35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtnDiente35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+
+        javax.swing.GroupLayout jpnlOdontogramaLayout = new javax.swing.GroupLayout(jpnlOdontograma);
+        jpnlOdontograma.setLayout(jpnlOdontogramaLayout);
+        jpnlOdontogramaLayout.setHorizontalGroup(
+            jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                .addGroup(jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jpnlDiente11_18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlOdontogramaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpnlDiente51_55, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(filler2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpnlDiente81_85, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpnlDiente41_48, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jpnlDiente21_28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnlDiente31_38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnlDiente71_75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpnlDiente61_65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
+        );
+        jpnlOdontogramaLayout.setVerticalGroup(
+            jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                .addGroup(jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpnlOdontogramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                                .addComponent(jpnlDiente21_28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jpnlDiente61_65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jpnlDiente71_75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jpnlDiente31_38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpnlOdontogramaLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jpnlDiente11_18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jpnlDiente51_55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jpnlDiente81_85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jpnlDiente41_48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(10, 10, 10))
+        );
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Trastorno"));
+
+        jbtnCarie.setText("Carie");
+        jbtnCarie.setName("jbtnCarie"); // NOI18N
+        jbtnCarie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCarieActionPerformed(evt);
+            }
+        });
+
+        jbtnObturacion.setText("Obturación");
+        jbtnObturacion.setName("jbtnObturacion"); // NOI18N
+        jbtnObturacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnObturacionActionPerformed(evt);
+            }
+        });
+
+        jbtnCoronaBuena.setText("Corona Buena");
+        jbtnCoronaBuena.setName("jbtnCoronaBuena"); // NOI18N
+        jbtnCoronaBuena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCoronaBuenaActionPerformed(evt);
+            }
+        });
+
+        jbtnCoronaARealizar.setText("Corona a Realizar");
+        jbtnCoronaARealizar.setName("jbtnCoronaARealizar"); // NOI18N
+        jbtnCoronaARealizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCoronaARealizarActionPerformed(evt);
+            }
+        });
+
+        jbtnConEndodoncia.setText("Con Endodoncia");
+        jbtnConEndodoncia.setName("jbtnConEndodoncia"); // NOI18N
+        jbtnConEndodoncia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConEndodonciaActionPerformed(evt);
+            }
+        });
+
+        jbtnNecesitaEndodoncia.setText("Necesita Endodoncia");
+        jbtnNecesitaEndodoncia.setName("jbtnNecesitaEndodoncia"); // NOI18N
+        jbtnNecesitaEndodoncia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNecesitaEndodonciaActionPerformed(evt);
+            }
+        });
+
+        jbtnTrauma.setText("Trauma");
+        jbtnTrauma.setName("jbtnTrauma"); // NOI18N
+        jbtnTrauma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnTraumaActionPerformed(evt);
+            }
+        });
+
+        jbtnRecurrente.setText("Recurrente");
+        jbtnRecurrente.setName("jbtnRecurrente"); // NOI18N
+        jbtnRecurrente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRecurrenteActionPerformed(evt);
+            }
+        });
+
+        jbtnDienteAusente.setText("Diente Ausente");
+        jbtnDienteAusente.setName("jbtnDienteAusente"); // NOI18N
+        jbtnDienteAusente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDienteAusenteActionPerformed(evt);
+            }
+        });
+
+        jbtnSinErupcionar.setText("Sin Erupcionar");
+        jbtnSinErupcionar.setName("jbtnSinErupcionar"); // NOI18N
+        jbtnSinErupcionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSinErupcionarActionPerformed(evt);
+            }
+        });
+
+        jbtnConSellante.setText("Con Sellante");
+        jbtnConSellante.setName("jbtnConSellante"); // NOI18N
+        jbtnConSellante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConSellanteActionPerformed(evt);
+            }
+        });
+
+        jbtnNecesitaSellante.setText("Necesita Sellante");
+        jbtnNecesitaSellante.setName("jbtnNecesitaSellante"); // NOI18N
+        jbtnNecesitaSellante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNecesitaSellanteActionPerformed(evt);
+            }
+        });
+
+        jbtnExodonciaRealizada.setText("Exodoncia Realizada");
+        jbtnExodonciaRealizada.setName("jbtnExodonciaRealizada"); // NOI18N
+        jbtnExodonciaRealizada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExodonciaRealizadaActionPerformed(evt);
+            }
+        });
+
+        jbtnExodonciaIndicada.setText("Exodoncia Indicada");
+        jbtnExodonciaIndicada.setName("jbtnExodonciaIndicada"); // NOI18N
+        jbtnExodonciaIndicada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExodonciaIndicadaActionPerformed(evt);
+            }
+        });
+
+        jbtnAbrasion.setText("Abracion");
+        jbtnAbrasion.setName("jbtnAbrasion"); // NOI18N
+        jbtnAbrasion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAbrasionActionPerformed(evt);
+            }
+        });
+
+        jbtnAtricion.setText("Atrición");
+        jbtnAtricion.setName("jbtnAtricion"); // NOI18N
+        jbtnAtricion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAtricionActionPerformed(evt);
+            }
+        });
+
+        jbtnNucleoBueno.setText("Nucleo Bueno");
+        jbtnNucleoBueno.setName("jbtnNucleoBueno"); // NOI18N
+        jbtnNucleoBueno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNucleoBuenoActionPerformed(evt);
+            }
+        });
+
+        jbtnNucleoARealizar.setText("Nucleo a Realizar");
+        jbtnNucleoARealizar.setName("jbtnNucleoARealizar"); // NOI18N
+        jbtnNucleoARealizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNucleoARealizarActionPerformed(evt);
+            }
+        });
+
+        jbtnSemiIncluido.setText("Semi Incluido");
+        jbtnSemiIncluido.setName("jbtnSemiIncluido"); // NOI18N
+        jbtnSemiIncluido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSemiIncluidoActionPerformed(evt);
+            }
+        });
+
+        jbtnGiroversion.setText("Giroversión");
+        jbtnGiroversion.setName("jbtnGiroversion"); // NOI18N
+        jbtnGiroversion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGiroversionActionPerformed(evt);
+            }
+        });
+
+        jbtnProvisional.setText("Provisional");
+        jbtnProvisional.setName("jbtnProvisional"); // NOI18N
+        jbtnProvisional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnProvisionalActionPerformed(evt);
+            }
+        });
+
+        jbtnResinaFisica.setText("Resina Física");
+        jbtnResinaFisica.setName("jbtnResinaFisica"); // NOI18N
+        jbtnResinaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnResinaFisicaActionPerformed(evt);
+            }
+        });
+
+        jbtnIonometroDeVidrio.setText("Ionometro de Vidrio");
+        jbtnIonometroDeVidrio.setName("jbtnIonometroDeVidrio"); // NOI18N
+        jbtnIonometroDeVidrio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnIonometroDeVidrioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jbtnNecesitaSellante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnExodonciaRealizada))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jbtnConSellante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnIonometroDeVidrio))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtnRecurrente)
+                            .addComponent(jbtnDienteAusente)
+                            .addComponent(jbtnSinErupcionar)
+                            .addComponent(jbtnConEndodoncia)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jbtnCoronaBuena)
+                                .addGap(96, 96, 96)
+                                .addComponent(jbtnNucleoBueno))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbtnCoronaARealizar)
+                                    .addComponent(jbtnNecesitaEndodoncia)
+                                    .addComponent(jbtnTrauma)
+                                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jbtnObturacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbtnCarie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(70, 70, 70)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbtnExodonciaIndicada)
+                                    .addComponent(jbtnAtricion)
+                                    .addComponent(jbtnAbrasion)
+                                    .addComponent(jbtnNucleoARealizar)
+                                    .addComponent(jbtnSemiIncluido)
+                                    .addComponent(jbtnGiroversion)
+                                    .addComponent(jbtnProvisional)
+                                    .addComponent(jbtnResinaFisica))))
+                        .addGap(0, 6, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnCarie)
+                    .addComponent(jbtnExodonciaIndicada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnObturacion)
+                    .addComponent(jbtnAbrasion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnCoronaARealizar)
+                    .addComponent(jbtnAtricion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnNecesitaEndodoncia)
+                    .addComponent(jbtnNucleoARealizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnTrauma)
+                    .addComponent(jbtnSemiIncluido))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnRecurrente)
+                    .addComponent(jbtnGiroversion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnDienteAusente)
+                    .addComponent(jbtnProvisional))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnSinErupcionar)
+                    .addComponent(jbtnResinaFisica))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnConSellante)
+                    .addComponent(jbtnIonometroDeVidrio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnNecesitaSellante)
+                    .addComponent(jbtnExodonciaRealizada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnCoronaBuena)
+                    .addComponent(jbtnNucleoBueno))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtnConEndodoncia)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable1);
+
+        jButton4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 0, 51));
+        jButton4.setText("X");
+        jButton4.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jpnlOdontograma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpnlOdontograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
+                .addGap(10, 10, 10))
+        );
+
+        jTabbedPane1.addTab("Odontograma", jPanel9);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable2);
+
+        jLabel1.setText("Historial de Citas");
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la Cita"));
+
+        jLabel8.setText("No. Cita");
+
+        try {
+            jftxfFechaNac1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfFechaNac1.setToolTipText("Fecha de Nacimiento del paciente en el formato YYYY-MM-DD");
+
+        jLabel9.setText("Fecha de la cita:");
+
+        jLabel18.setText("Observaciones:");
+
+        jtxtEMail.setEditable(false);
+        jtxtEMail.setToolTipText("Correo electronico del paciente");
+        jtxtEMail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtEMailFocusLost(evt);
+            }
+        });
+
+        jtxaDireccion.setColumns(20);
+        jtxaDireccion.setLineWrap(true);
+        jtxaDireccion.setRows(5);
+        jtxaDireccion.setToolTipText("Dirección del paciente (Calle-no. casa-sector-municipio-provincia-codigo postal)");
+        jtxaDireccion.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(jtxaDireccion);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtEMail))
+                    .addComponent(jLabel9))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jftxfFechaNac1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel18)
+                            .addComponent(jtxtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jftxfFechaNac1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton6.setText("Agregar Cita");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Especialista"));
+
+        jLabel11.setText("No. Doctor:");
+
+        jtxfIdCliente1.setEditable(false);
+        jtxfIdCliente1.setToolTipText("Codigo único del pasiente");
+
+        jLabel13.setText("Nombre:");
+
+        jLabel14.setText("Apellido:");
+
+        jtxtNombre1.setEditable(false);
+        jtxtNombre1.setToolTipText("Primer y segundo nombre del pasiente");
+
+        jtxtApellido1.setEditable(false);
+        jtxtApellido1.setToolTipText("Apellio/s del pasiente");
+
+        jLabel15.setText("Teléfono:");
+
+        jLabel16.setText("Celular:");
+
+        jLabel20.setText("Cédula:");
+
+        jftxfTelefono1.setEditable(false);
+        try {
+            jftxfTelefono1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfTelefono1.setToolTipText("Teléfono de contacto (Doméstico)");
+
+        jftxfCelular1.setEditable(false);
+        try {
+            jftxfCelular1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfCelular1.setToolTipText("Celular del pasiente (Personal)");
+
+        try {
+            jftxfCedula1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-#######-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftxfCedula1.setToolTipText("Cédula del pasiente. No puede estar duplicada.");
+        jftxfCedula1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jftxfCedula1FocusLost(evt);
+            }
+        });
+
+        jtxtApellido3.setEditable(false);
+        jtxtApellido3.setToolTipText("Apellio/s del paciente");
+
+        jLabel17.setText("Especialidad:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jftxfTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jftxfCelular1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxfIdCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jftxfCedula1))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtApellido1)
+                            .addComponent(jtxtApellido3)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtxtNombre1)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jtxfIdCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(jftxfCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jtxtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jtxtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jtxtApellido3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jftxfTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jftxfCelular1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton7.setText("Cancelar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Nuevo");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Guardar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton6)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Citas", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1239, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Factura", jPanel2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jchbCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbCentroActionPerformed
+        Pos = "centro";
+        if (this.jchbCentro.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jchbCentroActionPerformed
+
+    private void jchbLInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbLInternoActionPerformed
+        Pos = "Lderecho";
+        if (this.jchbLInterno.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jchbLInternoActionPerformed
+
+    private void jchbLExternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbLExternoActionPerformed
+        Pos = "Lizquierdo";
+        if (this.jchbLExterno.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jchbLExternoActionPerformed
+
+    private void jchbPFrontalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbPFrontalActionPerformed
+        Pos = "superior";
+        if (this.jchbPFrontal.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_jchbPFrontalActionPerformed
+
+    private void jchbPTraceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchbPTraceraActionPerformed
+        Pos = "inferior";
+        if (this.jchbPTracera.isSelected()) {
+            crear = new Crear(jpnlDienteCarie, jbtnDienteCarie);
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+        } else {
+            for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+                if (jpnlDienteCarie.getComponent(i).getName() != null) {
+                    if (jpnlDienteCarie.getComponent(i).getName().equals(TraumaAplicado + Pos + "Diente" + cod_diente)) {
+                        jpnlDienteCarie.getComponent(i).setVisible(false);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jchbPTraceraActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Trastornos(jButton, jPanel);
+        llena_Tabla();
+        this.jchbCentro.setSelected(false);
+        this.jchbLExterno.setSelected(false);
+        this.jchbLInterno.setSelected(false);
+        this.jchbPFrontal.setSelected(false);
+        this.jchbPTracera.setSelected(false);
+        for (int i = 0; i < jpnlDienteCarie.getComponentCount(); i++) {
+            jpnlDienteCarie.getComponent(i).setVisible(false);
+        }
+        jbtnDienteCarie.setVisible(true);
+        this.jDialog1.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jtxtEMailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtEMailFocusLost
+        if (!Validaciones.validateEmail(jtxtEMail.getText())) {
+            JOptionPane.showMessageDialog(this, "Este correo es invalido.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+            jtxtEMail.setText("");
+            jtxtEMail.grabFocus();
+        }
+    }//GEN-LAST:event_jtxtEMailFocusLost
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        EliminarTrastorno(evt);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jbtnIonometroDeVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIonometroDeVidrioActionPerformed
+        TraumaAplicado = "IonometroDeVidrio";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = true;
+    }//GEN-LAST:event_jbtnIonometroDeVidrioActionPerformed
+
+    private void jbtnResinaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnResinaFisicaActionPerformed
+        TraumaAplicado = "ResinaFisica";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = true;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnResinaFisicaActionPerformed
+
+    private void jbtnProvisionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProvisionalActionPerformed
+        TraumaAplicado = "Provisional";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = true;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnProvisionalActionPerformed
+
+    private void jbtnGiroversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGiroversionActionPerformed
+        TraumaAplicado = "Giroversion";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = true;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnGiroversionActionPerformed
+
+    private void jbtnSemiIncluidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSemiIncluidoActionPerformed
+        TraumaAplicado = "SemiIncluido";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = true;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnSemiIncluidoActionPerformed
+
+    private void jbtnNucleoARealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNucleoARealizarActionPerformed
+        TraumaAplicado = "NucleoARealizar";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = true;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnNucleoARealizarActionPerformed
+
+    private void jbtnNucleoBuenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNucleoBuenoActionPerformed
+        TraumaAplicado = "NucleoBueno";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = true;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnNucleoBuenoActionPerformed
+
+    private void jbtnAtricionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAtricionActionPerformed
+        TraumaAplicado = "Atricion";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = true;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnAtricionActionPerformed
+
+    private void jbtnAbrasionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAbrasionActionPerformed
+        TraumaAplicado = "Abracion";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = true;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnAbrasionActionPerformed
+
+    private void jbtnExodonciaIndicadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExodonciaIndicadaActionPerformed
+        TraumaAplicado = "ExodonciaIndicada";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = true;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnExodonciaIndicadaActionPerformed
+
+    private void jbtnExodonciaRealizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExodonciaRealizadaActionPerformed
+        TraumaAplicado = "ExodonciaRealizada";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = true;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnExodonciaRealizadaActionPerformed
+
+    private void jbtnNecesitaSellanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNecesitaSellanteActionPerformed
+        TraumaAplicado = "NecesitaSellante";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = true;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnNecesitaSellanteActionPerformed
+
+    private void jbtnConSellanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConSellanteActionPerformed
+        TraumaAplicado = "ConSellante";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = true;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnConSellanteActionPerformed
+
+    private void jbtnSinErupcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSinErupcionarActionPerformed
+        TraumaAplicado = "SinErupcionar";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = true;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnSinErupcionarActionPerformed
+
+    private void jbtnDienteAusenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDienteAusenteActionPerformed
+        TraumaAplicado = "DienteAusente";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = true;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnDienteAusenteActionPerformed
+
+    private void jbtnRecurrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRecurrenteActionPerformed
+        TraumaAplicado = "Recurrente";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = true;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnRecurrenteActionPerformed
+
+    private void jbtnTraumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnTraumaActionPerformed
+        TraumaAplicado = "Trauma";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = true;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnTraumaActionPerformed
+
+    private void jbtnNecesitaEndodonciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNecesitaEndodonciaActionPerformed
+        TraumaAplicado = "NecesitaEndodoncia";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = true;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnNecesitaEndodonciaActionPerformed
+
+    private void jbtnConEndodonciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConEndodonciaActionPerformed
+        TraumaAplicado = "ConEndodoncia";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = true;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnConEndodonciaActionPerformed
+
+    private void jbtnCoronaARealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCoronaARealizarActionPerformed
+        TraumaAplicado = "CoronaARealizar";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = true;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnCoronaARealizarActionPerformed
+
+    private void jbtnCoronaBuenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCoronaBuenaActionPerformed
+        TraumaAplicado = "CoronaBuena";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = true;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnCoronaBuenaActionPerformed
+
+    private void jbtnObturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnObturacionActionPerformed
+        TraumaAplicado = "Obturacion";
+        this.carie = false;
+        this.Obturacion = true;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnObturacionActionPerformed
+
+    private void jbtnCarieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCarieActionPerformed
+        TraumaAplicado = "carie";
+        this.carie = true;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }//GEN-LAST:event_jbtnCarieActionPerformed
+
+    private void jbtnDiente31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente31ActionPerformed
+        cod_diente = 31;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente31;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente31, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente31ActionPerformed
+
+    private void jbtnDiente32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente32ActionPerformed
+        cod_diente = 32;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente32;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente32, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente32ActionPerformed
+
+    private void jbtnDiente33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente33ActionPerformed
+        cod_diente = 33;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente33;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente33, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente33ActionPerformed
+
+    private void jbtnDiente34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente34ActionPerformed
+        cod_diente = 34;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente34;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente34, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente34ActionPerformed
+
+    private void jbtnDiente35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente35ActionPerformed
+        cod_diente = 35;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente35;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente35, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente35ActionPerformed
+
+    private void jbtnDiente36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente36ActionPerformed
+        cod_diente = 36;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente36;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente36, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente36ActionPerformed
+
+    private void jbtnDiente37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente37ActionPerformed
+        cod_diente = 37;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente37;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente37, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente37ActionPerformed
+
+    private void jbtnDiente38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente38ActionPerformed
+        cod_diente = 38;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente38;
+
+            jPanel = jpnlDiente31_38;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente38, jpnlDiente31_38);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente38ActionPerformed
+
+    private void jbtnDiente71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente71ActionPerformed
+        cod_diente = 71;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente71;
+
+            jPanel = jpnlDiente71_75;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente71, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente71ActionPerformed
+
+    private void jbtnDiente72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente72ActionPerformed
+        cod_diente = 72;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente72;
+
+            jPanel = jpnlDiente71_75;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente72, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente72ActionPerformed
+
+    private void jbtnDiente73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente73ActionPerformed
+        cod_diente = 73;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente73;
+
+            jPanel = jpnlDiente71_75;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente73, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente73ActionPerformed
+
+    private void jbtnDiente74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente74ActionPerformed
+        cod_diente = 74;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente74;
+
+            jPanel = jpnlDiente71_75;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente74, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente74ActionPerformed
+
+    private void jbtnDiente75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente75ActionPerformed
+        cod_diente = 75;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente75;
+
+            jPanel = jpnlDiente71_75;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente75, jpnlDiente71_75);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente75ActionPerformed
+
+    private void jbtnDiente61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente61ActionPerformed
+        cod_diente = 61;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente61;
+
+            jPanel = jpnlDiente61_65;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente61, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente61ActionPerformed
+
+    private void jbtnDiente62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente62ActionPerformed
+        cod_diente = 62;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente62;
+
+            jPanel = jpnlDiente61_65;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente62, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente62ActionPerformed
+
+    private void jbtnDiente63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente63ActionPerformed
+        cod_diente = 63;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente63;
+
+            jPanel = jpnlDiente61_65;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente63, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente63ActionPerformed
+
+    private void jbtnDiente64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente64ActionPerformed
+        cod_diente = 64;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente64;
+
+            jPanel = jpnlDiente61_65;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente64, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente64ActionPerformed
+
+    private void jbtnDiente65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente65ActionPerformed
+        cod_diente = 65;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente65;
+
+            jPanel = jpnlDiente61_65;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente65, jpnlDiente61_65);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente65ActionPerformed
+
+    private void jbtnDiente21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente21ActionPerformed
+        cod_diente = 21;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente21;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente21, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente21ActionPerformed
+
+    private void jbtnDiente22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente22ActionPerformed
+        cod_diente = 22;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente22;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente22, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente22ActionPerformed
+
+    private void jbtnDiente23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente23ActionPerformed
+        cod_diente = 23;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente23;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente23, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente23ActionPerformed
+
+    private void jbtnDiente24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente24ActionPerformed
+        cod_diente = 24;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente24;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente24, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente24ActionPerformed
+
+    private void jbtnDiente25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente25ActionPerformed
+        cod_diente = 25;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente25;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente25, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente25ActionPerformed
+
+    private void jbtnDiente26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente26ActionPerformed
+        cod_diente = 26;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente26;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente26, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente26ActionPerformed
+
+    private void jbtnDiente27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente27ActionPerformed
+        cod_diente = 27;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente27;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente27, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente27ActionPerformed
+
+    private void jbtnDiente28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente28ActionPerformed
+        cod_diente = 28;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente28;
+
+            jPanel = jpnlDiente21_28;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente28, jpnlDiente21_28);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente28ActionPerformed
+
+    private void jbtnDiente48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente48ActionPerformed
+        cod_diente = 48;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente48;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente48, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente48ActionPerformed
+
+    private void jbtnDiente47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente47ActionPerformed
+        cod_diente = 47;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente47;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente47, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente47ActionPerformed
+
+    private void jbtnDiente46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente46ActionPerformed
+        cod_diente = 46;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente46;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente46, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente46ActionPerformed
+
+    private void jbtnDiente45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente45ActionPerformed
+        cod_diente = 45;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente45;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente45, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente45ActionPerformed
+
+    private void jbtnDiente44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente44ActionPerformed
+        cod_diente = 44;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente44;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente44, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente44ActionPerformed
+
+    private void jbtnDiente43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente43ActionPerformed
+        cod_diente = 43;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente43;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente43, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente43ActionPerformed
+
+    private void jbtnDiente42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente42ActionPerformed
+        cod_diente = 42;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente42;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente42, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente42ActionPerformed
+
+    private void jbtnDiente41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente41ActionPerformed
+        cod_diente = 41;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente41;
+
+            jPanel = jpnlDiente41_48;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente41, jpnlDiente41_48);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente41ActionPerformed
+
+    private void jbtnDiente85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente85ActionPerformed
+        cod_diente = 85;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente85;
+
+            jPanel = jpnlDiente81_85;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente85, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente85ActionPerformed
+
+    private void jbtnDiente84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente84ActionPerformed
+        cod_diente = 84;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente84;
+
+            jPanel = jpnlDiente81_85;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente84, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente84ActionPerformed
+
+    private void jbtnDiente83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente83ActionPerformed
+        cod_diente = 83;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente83;
+
+            jPanel = jpnlDiente81_85;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente83, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente83ActionPerformed
+
+    private void jbtnDiente82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente82ActionPerformed
+        cod_diente = 82;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente82;
+
+            jPanel = jpnlDiente81_85;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente82, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente82ActionPerformed
+
+    private void jbtnDiente81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente81ActionPerformed
+        cod_diente = 81;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente81;
+
+            jPanel = jpnlDiente81_85;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente81, jpnlDiente81_85);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente81ActionPerformed
+
+    private void jbtnDiente55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente55ActionPerformed
+        cod_diente = 55;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente55;
+
+            jPanel = jpnlDiente51_55;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente55, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente55ActionPerformed
+
+    private void jbtnDiente54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente54ActionPerformed
+        cod_diente = 54;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente54;
+
+            jPanel = jpnlDiente51_55;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente54, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente54ActionPerformed
+
+    private void jbtnDiente53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente53ActionPerformed
+        cod_diente = 53;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente53;
+
+            jPanel = jpnlDiente51_55;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente53, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente53ActionPerformed
+
+    private void jbtnDiente52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente52ActionPerformed
+        cod_diente = 52;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente52;
+
+            jPanel = jpnlDiente51_55;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente52, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente52ActionPerformed
+
+    private void jbtnDiente51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente51ActionPerformed
+        cod_diente = 51;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente51;
+
+            jPanel = jpnlDiente51_55;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente51, jpnlDiente51_55);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente51ActionPerformed
+
+    private void jbtnDiente18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente18ActionPerformed
+        cod_diente = 18;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente18;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion
+                || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio
+                || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente18, jpnlDiente11_18);
+            llena_Tabla();
+        }
+    }//GEN-LAST:event_jbtnDiente18ActionPerformed
+
+    private void jbtnDiente17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente17ActionPerformed
+        cod_diente = 17;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente17;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente17, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente17ActionPerformed
+
+    private void jbtnDiente16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente16ActionPerformed
+        cod_diente = 16;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente16;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente16, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente16ActionPerformed
+
+    private void jbtnDiente15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente15ActionPerformed
+        cod_diente = 15;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente15;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente15, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente15ActionPerformed
+
+    private void jbtnDiente14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente14ActionPerformed
+        cod_diente = 14;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente14;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente14, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente14ActionPerformed
+
+    private void jbtnDiente13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente13ActionPerformed
+        cod_diente = 13;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente13;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente13, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente13ActionPerformed
+
+    private void jbtnDiente12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente12ActionPerformed
+        cod_diente = 12;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente12;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente12, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente12ActionPerformed
+
+    private void jbtnDiente11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiente11ActionPerformed
+        cod_diente = 11;
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            llamarDialogo();
+            jButton = jbtnDiente11;
+
+            jPanel = jpnlDiente11_18;
+        } else if (ConEndodoncia || NecesitaEndodoncia || CoronaBuena || CoronaARealizar || Abracion || Atricion || DienteAusente || SinErupcionar || SemiIncluido || IonometroDeVidrio || ResinaFisica || Provisional || Giroversion || NucleoBueno || NucleoARealizar) {
+            Trastornos(jbtnDiente11, jpnlDiente11_18);
+            llena_Tabla();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDiente11ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jtxfIdCliente4.getText().isEmpty() || jtxtNombre4.getText().isEmpty() || jftxfFechaNac.getText().isEmpty() || jftxfCedula.getText().replace("-", "").replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos necesarios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (JOptionPane.showConfirmDialog(this, "Está segur@ de que desea grardar?", "Información", JOptionPane.INFORMATION_MESSAGE) == 0) {
+                if (!Duplicada) {
+                    String[] Orden = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "FECHA_REGISTRO", "CEDULA", "ID_SEGURO"};
+                    String[] Data = {"1", jtxfIdCliente4.getText(), jtxtNombre4.getText(), jtxtApellido4.getText(), jftxfTelefono.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""),
+                        jftxfCelular.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jtxaDireccion4.getText(), jtxtEMail4.getText(), jftxfFechaNac.getText(), "2017-10-17", jftxfCedula.getText().replace("-", ""), jtxtSeguroSocial1.getText()};
+                    MQ.inserts(Orden, Data, "Persona");
+
+                    if (this.jCheckBox1.isSelected() == true) {
+                        String[] Orden2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
+                        String[] Data2 = {jtxtSeguroSocial1.getText(), jTextField7.getText(), jftxfTelefono2.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jTextField6.getText(), jTextField8.getText(), jTextField9.getText()};
+                        MQ.inserts(Orden2, Data2, "seguro");
+                    }
+                } else {
+                    String[] Orden = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "FECHA_REGISTRO", "CEDULA", "ID_SEGURO"};
+                    String[] Data = {"1", jtxfIdCliente4.getText(), jtxtNombre4.getText(), jtxtApellido4.getText(), jftxfTelefono.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""),
+                        jftxfCelular.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jtxaDireccion4.getText(), jtxtEMail4.getText(), jftxfFechaNac.getText(), "2017-10-17", jftxfCedula.getText().replace("-", ""), jtxtSeguroSocial1.getText()};
+                    MQ.Updates(Orden, Data, "Persona", jftxfCedula.getText().replace("-", "") + "= Cedula");
+
+                    if (this.jCheckBox1.isSelected() == true) {
+                        String[] Orden2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
+                        String[] Data2 = {jtxtSeguroSocial1.getText(), jTextField7.getText(), jftxfTelefono2.getText().replace("(", "").replace(")", "").replace(" ", "").replace("-", ""), jTextField6.getText(), jTextField8.getText(), jTextField9.getText()};
+                        MQ.Updates(Orden2, Data2, "seguro", jtxtSeguroSocial1.getText() + "= id_seguro");
+                    }
+                }
+                Nuevo();
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Nuevo();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Nuevo();
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        jPanel7.setVisible(jCheckBox1.isSelected());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jftxfCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jftxfCedulaFocusLost
+        boolean verdad = Validaciones.validarCedula(jftxfCedula.getText().replace("-", ""));
+        if (!verdad) {
+            JOptionPane.showMessageDialog(this, "Esta cédula no es válida.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.jftxfCedula.setText("");
+            this.jftxfCedula.grabFocus();
+        } else {
+            if (MQ.SelectWhereCount("Cedula", "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula")) > 0) {
+                Duplicada = true;
+                if (JOptionPane.showConfirmDialog(this, "Esta cédula ya esta en el sistema.\nDesea Actualizar los datos.", "Error", JOptionPane.ERROR_MESSAGE) == 0) {
+                    String[] datos = {"ID_ROL", "ID_PERSONA", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR", "DIRECCION", "E_MAIL", "FECHA_NACIMIENTO", "ID_SEGURO"};
+                    String[] reg = MQ.SelectWhereData1(datos, "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula"));
+                    this.jtxfIdCliente4.setText(reg[1]);
+                    this.jtxtNombre4.setText(reg[2]);
+                    this.jtxtApellido4.setText(reg[3]);
+                    this.jftxfTelefono.setText(reg[4]);
+                    this.jftxfCelular.setText(reg[5]);
+                    this.jtxaDireccion4.setText(reg[6]);
+                    this.jtxtEMail4.setText(reg[7]);
+                    this.jftxfFechaNac.setText(reg[8]);
+                    if (!reg[8].isEmpty()) {
+                        this.jCheckBox1.setSelected(true);
+                        this.jPanel7.setVisible(true);
+                        String[] datos2 = {"ID_SEGURO", "NOMBRE_SEGURO", "TELEFONO_SEGURO", "NUMERO_POLIZA", "NUMERO_GRUPO", "SEGURO_SOCIAL"};
+                        String[] reg2 = MQ.SelectWhereData1(datos2, "Seguro", reg[9].concat("= ID_SEGURO"));
+                        this.jtxtSeguroSocial1.setText(reg2[0]);
+                        this.jTextField7.setText(reg2[1]);
+                        this.jftxfTelefono1.setText(reg2[2]);
+                        this.jTextField6.setText(reg2[3]);
+                        this.jTextField8.setText(reg2[4]);
+                        this.jTextField9.setText(reg2[5]);
+                    }
+                } else {
+                    Duplicada = false;
+                    this.jftxfCedula.setText("");
+                    this.jftxfCedula.grabFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_jftxfCedulaFocusLost
+
+    private void jtxtEMail4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtEMail4FocusLost
+        if (!Validaciones.validateEmail(jtxtEMail4.getText())) {
+            JOptionPane.showMessageDialog(this, "Este correo es invalido.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+            jtxtEMail4.setText("");
+            jtxtEMail4.grabFocus();
+        }
+    }//GEN-LAST:event_jtxtEMail4FocusLost
+
+    private void jftxfCedula1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jftxfCedula1FocusLost
+        boolean verdad = Validaciones.validarCedula(jftxfCedula.getText().replace("-", ""));
+        if (!verdad) {
+            JOptionPane.showMessageDialog(this, "Esta cédula no es válida.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.jftxfCedula.setText("");
+            this.jftxfCedula.grabFocus();
+        } else {
+            if (MQ.SelectWhereCount("Cedula", "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula")) == 1) {
+                String[] datos = {"ID_Persona", "NOMBRE", "APELLIDO", "TELEFONO", "CELULAR"};
+                String[] reg = MQ.SelectWhereData1(datos, "Persona", jftxfCedula.getText().replace("-", "").concat("= Cedula"));
+                System.out.println(reg.length);
+                this.jtxtNombre1.setText(reg[1]);
+                this.jtxtApellido1.setText(reg[2]);
+                this.jtxfIdCliente1.setText(reg[0]);
+                this.jftxfTelefono1.setText(reg[3]);
+                this.jftxfCelular1.setText(reg[4]);
+                String Condicion = " " + jtxfIdCliente1.getText() + " = persona_especialidad.ID_PERSONA and especialidades.ID_ESPECIALIDAD = persona_especialidad.ID_ESPECIALIDAD";
+                String[] datos2 = {"Nombre"};
+                String res = "";
+                String[] reg2 = MQ.SelectWhereData1(datos2, "especialidades, persona_especialidad", Condicion);
+                for (String reg21 : reg2) {
+                    res = res.concat(reg21).concat(", ");
+                }
+                res = res.substring(0, res.length() - 2);
+                this.jtxtApellido3.setText(res);
+            } else {
+                JOptionPane.showMessageDialog(this, "Esta cédula no esta en el sistema.\nRevise e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+                this.jftxfCedula.setText("");
+                this.jftxfCedula.grabFocus();
+            }
+        }
+    }//GEN-LAST:event_jftxfCedula1FocusLost
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Nuevo();
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        Nuevo();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if (jtxfIdCliente4.getText().isEmpty() || jtxtNombre4.getText().isEmpty() || jftxfFechaNac.getText().isEmpty() || jftxfCedula.getText().replace("-", "").replace(" ", "").isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos necesarios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (JOptionPane.showConfirmDialog(this, "Está segur@ de que desea grardar?", "Información", JOptionPane.INFORMATION_MESSAGE) == 0) {
+                String[] Orden = {"ID_CITA", "FECHA_CITA", "ID_PERSONAC", "ID_PERSONAO", "FECHA_REGISTRO", "OBSERVACIONES"};
+                String[] Data = {this.jtxtEMail.getText(), this.jftxfFechaNac.getText(), this.jtxfIdCliente4.getText(), this.jtxfIdCliente1.getText(), "2017-10-20", this.jtxaDireccion.getText()};
+                MQ.inserts(Orden, Data, "cita");
+                Nuevo();
+            }
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jPanel5.setVisible(true);
+        jPanel3.setVisible(true);
+        jPanel7.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jbtnAbrasion;
+    private javax.swing.JButton jbtnAtricion;
+    private javax.swing.JButton jbtnCarie;
+    private javax.swing.JButton jbtnConEndodoncia;
+    private javax.swing.JButton jbtnConSellante;
+    private javax.swing.JButton jbtnCoronaARealizar;
+    private javax.swing.JButton jbtnCoronaBuena;
+    private javax.swing.JButton jbtnDiente11;
+    private javax.swing.JButton jbtnDiente12;
+    private javax.swing.JButton jbtnDiente13;
+    private javax.swing.JButton jbtnDiente14;
+    private javax.swing.JButton jbtnDiente15;
+    private javax.swing.JButton jbtnDiente16;
+    private javax.swing.JButton jbtnDiente17;
+    private javax.swing.JButton jbtnDiente18;
+    private javax.swing.JButton jbtnDiente21;
+    private javax.swing.JButton jbtnDiente22;
+    private javax.swing.JButton jbtnDiente23;
+    private javax.swing.JButton jbtnDiente24;
+    private javax.swing.JButton jbtnDiente25;
+    private javax.swing.JButton jbtnDiente26;
+    private javax.swing.JButton jbtnDiente27;
+    private javax.swing.JButton jbtnDiente28;
+    private javax.swing.JButton jbtnDiente31;
+    private javax.swing.JButton jbtnDiente32;
+    private javax.swing.JButton jbtnDiente33;
+    private javax.swing.JButton jbtnDiente34;
+    private javax.swing.JButton jbtnDiente35;
+    private javax.swing.JButton jbtnDiente36;
+    private javax.swing.JButton jbtnDiente37;
+    private javax.swing.JButton jbtnDiente38;
+    private javax.swing.JButton jbtnDiente41;
+    private javax.swing.JButton jbtnDiente42;
+    private javax.swing.JButton jbtnDiente43;
+    private javax.swing.JButton jbtnDiente44;
+    private javax.swing.JButton jbtnDiente45;
+    private javax.swing.JButton jbtnDiente46;
+    private javax.swing.JButton jbtnDiente47;
+    private javax.swing.JButton jbtnDiente48;
+    private javax.swing.JButton jbtnDiente51;
+    private javax.swing.JButton jbtnDiente52;
+    private javax.swing.JButton jbtnDiente53;
+    private javax.swing.JButton jbtnDiente54;
+    private javax.swing.JButton jbtnDiente55;
+    private javax.swing.JButton jbtnDiente61;
+    private javax.swing.JButton jbtnDiente62;
+    private javax.swing.JButton jbtnDiente63;
+    private javax.swing.JButton jbtnDiente64;
+    private javax.swing.JButton jbtnDiente65;
+    private javax.swing.JButton jbtnDiente71;
+    private javax.swing.JButton jbtnDiente72;
+    private javax.swing.JButton jbtnDiente73;
+    private javax.swing.JButton jbtnDiente74;
+    private javax.swing.JButton jbtnDiente75;
+    private javax.swing.JButton jbtnDiente81;
+    private javax.swing.JButton jbtnDiente82;
+    private javax.swing.JButton jbtnDiente83;
+    private javax.swing.JButton jbtnDiente84;
+    private javax.swing.JButton jbtnDiente85;
+    private javax.swing.JButton jbtnDienteAusente;
+    private javax.swing.JButton jbtnDienteCarie;
+    private javax.swing.JButton jbtnExodonciaIndicada;
+    private javax.swing.JButton jbtnExodonciaRealizada;
+    private javax.swing.JButton jbtnGiroversion;
+    private javax.swing.JButton jbtnIonometroDeVidrio;
+    private javax.swing.JButton jbtnNecesitaEndodoncia;
+    private javax.swing.JButton jbtnNecesitaSellante;
+    private javax.swing.JButton jbtnNucleoARealizar;
+    private javax.swing.JButton jbtnNucleoBueno;
+    private javax.swing.JButton jbtnObturacion;
+    private javax.swing.JButton jbtnProvisional;
+    private javax.swing.JButton jbtnRecurrente;
+    private javax.swing.JButton jbtnResinaFisica;
+    private javax.swing.JButton jbtnSemiIncluido;
+    private javax.swing.JButton jbtnSinErupcionar;
+    private javax.swing.JButton jbtnTrauma;
+    private javax.swing.JCheckBox jchbCentro;
+    private javax.swing.JCheckBox jchbLExterno;
+    private javax.swing.JCheckBox jchbLInterno;
+    private javax.swing.JCheckBox jchbPFrontal;
+    private javax.swing.JCheckBox jchbPTracera;
+    private javax.swing.JFormattedTextField jftxfCedula;
+    private javax.swing.JFormattedTextField jftxfCedula1;
+    private javax.swing.JFormattedTextField jftxfCelular;
+    private javax.swing.JFormattedTextField jftxfCelular1;
+    private javax.swing.JFormattedTextField jftxfFechaNac;
+    private javax.swing.JFormattedTextField jftxfFechaNac1;
+    private javax.swing.JFormattedTextField jftxfTelefono;
+    private javax.swing.JFormattedTextField jftxfTelefono1;
+    private javax.swing.JFormattedTextField jftxfTelefono2;
+    private javax.swing.JLabel jlblDiente11;
+    private javax.swing.JLabel jlblDiente12;
+    private javax.swing.JLabel jlblDiente13;
+    private javax.swing.JLabel jlblDiente14;
+    private javax.swing.JLabel jlblDiente15;
+    private javax.swing.JLabel jlblDiente16;
+    private javax.swing.JLabel jlblDiente17;
+    private javax.swing.JLabel jlblDiente18;
+    private javax.swing.JLabel jlblDiente21;
+    private javax.swing.JLabel jlblDiente22;
+    private javax.swing.JLabel jlblDiente23;
+    private javax.swing.JLabel jlblDiente24;
+    private javax.swing.JLabel jlblDiente25;
+    private javax.swing.JLabel jlblDiente26;
+    private javax.swing.JLabel jlblDiente27;
+    private javax.swing.JLabel jlblDiente28;
+    private javax.swing.JLabel jlblDiente31;
+    private javax.swing.JLabel jlblDiente32;
+    private javax.swing.JLabel jlblDiente33;
+    private javax.swing.JLabel jlblDiente34;
+    private javax.swing.JLabel jlblDiente35;
+    private javax.swing.JLabel jlblDiente36;
+    private javax.swing.JLabel jlblDiente37;
+    private javax.swing.JLabel jlblDiente38;
+    private javax.swing.JLabel jlblDiente41;
+    private javax.swing.JLabel jlblDiente42;
+    private javax.swing.JLabel jlblDiente43;
+    private javax.swing.JLabel jlblDiente44;
+    private javax.swing.JLabel jlblDiente45;
+    private javax.swing.JLabel jlblDiente46;
+    private javax.swing.JLabel jlblDiente47;
+    private javax.swing.JLabel jlblDiente48;
+    private javax.swing.JLabel jlblDiente51;
+    private javax.swing.JLabel jlblDiente52;
+    private javax.swing.JLabel jlblDiente53;
+    private javax.swing.JLabel jlblDiente54;
+    private javax.swing.JLabel jlblDiente55;
+    private javax.swing.JLabel jlblDiente61;
+    private javax.swing.JLabel jlblDiente62;
+    private javax.swing.JLabel jlblDiente63;
+    private javax.swing.JLabel jlblDiente64;
+    private javax.swing.JLabel jlblDiente65;
+    private javax.swing.JLabel jlblDiente71;
+    private javax.swing.JLabel jlblDiente72;
+    private javax.swing.JLabel jlblDiente73;
+    private javax.swing.JLabel jlblDiente74;
+    private javax.swing.JLabel jlblDiente75;
+    private javax.swing.JLabel jlblDiente81;
+    private javax.swing.JLabel jlblDiente82;
+    private javax.swing.JLabel jlblDiente83;
+    private javax.swing.JLabel jlblDiente84;
+    private javax.swing.JLabel jlblDiente85;
+    private javax.swing.JLabel jlblreloj;
+    private javax.swing.JPanel jpnlDiente11_18;
+    private javax.swing.JPanel jpnlDiente21_28;
+    private javax.swing.JPanel jpnlDiente31_38;
+    private javax.swing.JPanel jpnlDiente41_48;
+    private javax.swing.JPanel jpnlDiente51_55;
+    private javax.swing.JPanel jpnlDiente61_65;
+    private javax.swing.JPanel jpnlDiente71_75;
+    private javax.swing.JPanel jpnlDiente81_85;
+    private javax.swing.JPanel jpnlDienteCarie;
+    private javax.swing.JPanel jpnlOdontograma;
+    private javax.swing.JPanel jpnlPosicionCarie;
+    private javax.swing.JTextArea jtxaDireccion;
+    private javax.swing.JTextArea jtxaDireccion4;
+    private javax.swing.JTextField jtxfIdCliente1;
+    private javax.swing.JTextField jtxfIdCliente4;
+    private javax.swing.JTextField jtxtApellido1;
+    private javax.swing.JTextField jtxtApellido3;
+    private javax.swing.JTextField jtxtApellido4;
+    private javax.swing.JTextField jtxtEMail;
+    private javax.swing.JTextField jtxtEMail4;
+    private javax.swing.JTextField jtxtNombre1;
+    private javax.swing.JTextField jtxtNombre4;
+    private javax.swing.JTextField jtxtSeguroSocial1;
+    // End of variables declaration//GEN-END:variables
+private void Nuevo() {
+        this.jtxfIdCliente4.setText("");
+        this.jtxtNombre4.setText("");
+        this.jtxtApellido4.setText("");
+        this.jtxtSeguroSocial1.setText("");
+        this.jtxaDireccion4.setText("");
+        this.jtxtEMail4.setText("");
+        this.jftxfCedula.setText("");
+        this.jftxfCelular.setText("");
+        this.jftxfFechaNac.setText("");
+        this.jftxfTelefono.setText("");
+        this.jftxfTelefono1.setText("");
+        this.jTextField6.setText("");
+        this.jTextField7.setText("");
+        this.jTextField8.setText("");
+        this.jTextField9.setText("");
+        int dat = Integer.valueOf(MQ.SelectsMaxID("ID_PERSONA", "persona"));
+        this.jtxfIdCliente4.setText(String.valueOf(dat));
+        this.jftxfCedula.grabFocus();
+    }
+
+    private void Trastornos(JButton jbtnDiente, JPanel jpnlDiente) {
+        if (carie || Obturacion || Trauma || Recurrente || ConSellante || NecesitaSellante) {
+            if (this.jchbCentro.isSelected()) {
+                Posiciones("centro", jbtnDiente, jpnlDiente);
+                RellenarPosiciones("Centro");
+            }
+            if (this.jchbLExterno.isSelected()) {
+                Posiciones("Lizquierdo", jbtnDiente, jpnlDiente);
+                RellenarPosiciones("Lado Externo");
+            }
+            if (this.jchbLInterno.isSelected()) {
+                Posiciones("Lderecho", jbtnDiente, jpnlDiente);
+                RellenarPosiciones("Lado Interno");
+            }
+            if (this.jchbPFrontal.isSelected()) {
+                Posiciones("superior", jbtnDiente, jpnlDiente);
+                RellenarPosiciones("Parte Frontal");
+            }
+            if (this.jchbPTracera.isSelected()) {
+                Posiciones("inferior", jbtnDiente, jpnlDiente);
+                RellenarPosiciones("Parte Tracera");
+            }
+        } else {
+            if (ConEndodoncia) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (NecesitaEndodoncia) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (CoronaBuena) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (CoronaARealizar) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (Abracion) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (Atricion) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (DienteAusente) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (SinErupcionar) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (SemiIncluido) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (IonometroDeVidrio) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (ResinaFisica) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (Provisional) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (Giroversion) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (NucleoBueno) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (NucleoARealizar) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (ExodonciaRealizada) {
+                Imagen(jbtnDiente, jpnlDiente);
+            } else if (ExodonciaIndicada) {
+                Imagen(jbtnDiente, jpnlDiente);
+            }
+        }
+    }
+
+    private void RellenarPosiciones(String Posicion) {
+        if (Reg_Pos.isEmpty()) {
+            Reg_Pos = Posicion;
+        } else {
+            Reg_Pos = Reg_Pos.concat(", " + Posicion);
+        }
+    }
+
+    private void llamarDialogo() {
+        jDialog1.setSize(550, 300);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = jDialog1.getSize();
+
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        jDialog1.setVisible(true);
+        jDialog1.setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 2);
+    }
+
+    private void Posiciones(String pos, JButton jbtnDiente, JPanel jpnlDiente) {
+        Pos = pos;
+        if (carie) {
+            TraumaAplicado = "carie";
+            Imagen(jbtnDiente, jpnlDiente);
+        } else if (ConSellante) {
+            TraumaAplicado = "ConSellante";
+            Imagen(jbtnDiente, jpnlDiente);
+        } else if (Obturacion) {
+            TraumaAplicado = "Obturacion";
+            Imagen(jbtnDiente, jpnlDiente);
+        } else if (Recurrente) {
+            TraumaAplicado = "recurrente";
+            Imagen(jbtnDiente, jpnlDiente);
+        } else if (Trauma) {
+            TraumaAplicado = "Trauma";
+            Imagen(jbtnDiente, jpnlDiente);
+        } else if (NecesitaSellante) {
+            TraumaAplicado = "NecesitaSellante";
+            Imagen(jbtnDiente, jpnlDiente);
+        }
+    }
+
+    private void Imagen(JButton jbtnDiente, JPanel jpnlDiente) {
+        crear = new Crear(jpnlDiente, jbtnDiente);
+        if (!"".equals(Pos)) {
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + Pos + ".png", cod_diente);
+            Pos = "";
+        } else {
+            crear.Nuevo_Objeto("../Iconos/" + TraumaAplicado + ".png", cod_diente);
+        }
+
+    }
+
+    private void llena_Tabla() {
+        String NombreTR = "";
+        int p = 0;
+        String[] Datos = new String[4];
+        for (int i = 0; i < TraumaAplicado.length(); i++) {
+            if (Character.isUpperCase(TraumaAplicado.charAt(i))) {
+                if (p == 0) {
+                    NombreTR = NombreTR.concat(TraumaAplicado.substring(0, i)).concat(" ");
+                } else {
+                    NombreTR = NombreTR.concat(TraumaAplicado.substring(p, i)).concat(" ");
+                }
+                p = i;
+            }
+            if (i + 1 == TraumaAplicado.length()) {
+                NombreTR = NombreTR.concat(TraumaAplicado.substring(p, TraumaAplicado.length()));
+            }
+        }
+        Datos[0] = String.valueOf(cod_diente);
+        Datos[1] = NombreTR;
+        if (!Reg_Pos.isEmpty()) {
+            Datos[2] = Reg_Pos;
+        } else {
+            Datos[2] = "N/A";
+        }
+        Datos[3] = "Pendiente";
+        jtbmDetalleOdontograma.addRow(Datos);
+        jTable1.setModel(jtbmDetalleOdontograma);
+        Reg_Pos = "";
+        VarFalse();
+    }
+
+    private void VarFalse() {
+        TraumaAplicado = "";
+        this.carie = false;
+        this.Obturacion = false;
+        this.CoronaBuena = false;
+        this.CoronaARealizar = false;
+        this.ConEndodoncia = false;
+        this.NecesitaEndodoncia = false;
+        this.Trauma = false;
+        this.Recurrente = false;
+        this.DienteAusente = false;
+        this.SinErupcionar = false;
+        this.ConSellante = false;
+        this.NecesitaSellante = false;
+        this.ExodonciaRealizada = false;
+        this.ExodonciaIndicada = false;
+        this.Abracion = false;
+        this.Atricion = false;
+        this.NucleoBueno = false;
+        this.NucleoARealizar = false;
+        this.SemiIncluido = false;
+        this.Giroversion = false;
+        this.Provisional = false;
+        this.ResinaFisica = false;
+        this.IonometroDeVidrio = false;
+    }
+
+    private void EliminarTrastorno(ActionEvent evt) throws NumberFormatException, HeadlessException {
+        if (this.jTable1.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos una fila", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int row, dient;
+            String Traum, nombre;
+            row = this.jTable1.getSelectedRow();
+            dient = Integer.valueOf(this.jTable1.getValueAt(row, 0).toString());
+            cod_diente = dient;
+            Posicion = this.jTable1.getValueAt(row, 2).toString().split(", ");
+            llenarPos = this.jTable1.getValueAt(row, 2).toString().split(", ");
+            ArregarPosicion();
+            Traum = this.jTable1.getValueAt(row, 1).toString().replace(" ", "");
+            if (Posicion.length == 1 && "N/A".equals(Posicion[0])) {
+                nombre = Traum.concat("Diente").concat(String.valueOf(dient));
+            } else {
+                VarFalse();
+                ActivarTrauma(Traum, evt);
+                identificarDientePanel(dient);
+                llamarDialogo();
+                ActivarJChekBox(evt);
+            }
+
+            for (int i = 0; i < Posicion.length; i++) {
+                if (!Posicion[i].equals("N/A")) {
+                    Posicion[i] = Traum.concat(Posicion[i]).concat("Diente").concat(String.valueOf(dient));
+                } else {
+                    Posicion[i] = Traum.concat("Diente").concat(String.valueOf(dient));
+                }
+            }
+
+            OcultarElemento(dient, Traum);
+            this.jtbmDetalleOdontograma.removeRow(row);
+            this.jTable1.setModel(jtbmDetalleOdontograma);
+        }
+    }
+
+    private void ActivarJChekBox(ActionEvent evt) {
+        for (String llenarPos1 : llenarPos) {
+            if (jchbCentro.getName().equals(llenarPos1)) {
+                jchbCentro.setSelected(true);
+                jchbCentroActionPerformed(evt);
+            } else if (jchbLExterno.getName().equals(llenarPos1)) {
+                jchbLExterno.setSelected(true);
+                jchbLExternoActionPerformed(evt);
+            } else if (jchbLInterno.getName().equals(llenarPos1)) {
+                jchbLInterno.setSelected(true);
+                jchbLInternoActionPerformed(evt);
+            } else if (jchbPFrontal.getName().equals(llenarPos1)) {
+                jchbPFrontal.setSelected(true);
+                jchbPFrontalActionPerformed(evt);
+            } else if (jchbLExterno.getName().equals(llenarPos1)) {
+                jchbPTracera.setSelected(true);
+                jchbPTraceraActionPerformed(evt);
+            }
+        }
+    }
+
+    private void ArregarPosicion() {
+        for (int i = 0; i < Posicion.length; i++) {
+            switch (Posicion[i]) {
+                case "Centro":
+                    Posicion[i] = "centro";
+                    llenarPos[i] = "jchbCentro";
+                    break;
+                case "Lado Interno":
+                    Posicion[i] = "Lderecho";
+                    llenarPos[i] = "jchbLInterno";
+                    break;
+                case "Lado Externo":
+                    Posicion[i] = "Lizquierdo";
+                    llenarPos[i] = "jchbLExterno";
+                    break;
+                case "Parte Tracera":
+                    Posicion[i] = "inferior";
+                    llenarPos[i] = "jchbPTracera";
+                    break;
+                case "Parte Frontal":
+                    Posicion[i] = "superior";
+                    llenarPos[i] = "jchbPFrontal";
+                    break;
+            }
+        }
+    }
+
+    private void OcultarElemento(int dient, String Traum) {
+        if (dient >= 11 && dient <= 18) {
+            for (int i = 0; i < jpnlDiente11_18.getComponentCount(); i++) {
+                if (jpnlDiente11_18.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente11_18.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente11_18.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 51 && dient <= 55) {
+            for (int i = 0; i < jpnlDiente51_55.getComponentCount(); i++) {
+                if (jpnlDiente51_55.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente51_55.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente51_55.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 81 && dient <= 85) {
+            for (int i = 0; i < jpnlDiente81_85.getComponentCount(); i++) {
+                if (jpnlDiente81_85.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente81_85.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente81_85.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 41 && dient <= 48) {
+            for (int i = 0; i < jpnlDiente41_48.getComponentCount(); i++) {
+                if (jpnlDiente41_48.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente41_48.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente41_48.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 21 && dient <= 28) {
+
+            for (int i = 0; i < jpnlDiente21_28.getComponentCount(); i++) {
+                if (jpnlDiente21_28.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente21_28.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente21_28.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 61 && dient <= 65) {
+            for (int i = 0; i < jpnlDiente61_65.getComponentCount(); i++) {
+                if (jpnlDiente61_65.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente61_65.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente61_65.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 71 && dient <= 75) {
+            for (int i = 0; i < jpnlDiente71_75.getComponentCount(); i++) {
+                if (jpnlDiente71_75.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente71_75.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente71_75.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        } else if (dient >= 31 && dient <= 38) {
+            for (int i = 0; i < jpnlDiente31_38.getComponentCount(); i++) {
+                if (jpnlDiente31_38.getComponent(i).getName() != null) {
+                    for (String Posicion1 : Posicion) {
+                        if (jpnlDiente31_38.getComponent(i).getName().toUpperCase().equals(Posicion1.toUpperCase())) {
+                            jpnlDiente31_38.getComponent(i).setVisible(false);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void ActivarTrauma(String Traum, ActionEvent evt) {
+        if (Traum.toUpperCase().equals(this.jbtnCarie.getName().substring(4).toUpperCase())) {
+            jbtnCarieActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnObturacion.getName().substring(4).toUpperCase())) {
+            jbtnObturacionActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnCoronaARealizar.getName().substring(4).toUpperCase())) {
+            jbtnCoronaARealizarActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnNecesitaEndodoncia.getName().substring(4).toUpperCase())) {
+            jbtnNecesitaEndodonciaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnTrauma.getName().substring(4).toUpperCase())) {
+            jbtnTraumaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnRecurrente.getName().substring(4).toUpperCase())) {
+            jbtnRecurrenteActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnDienteAusente.getName().substring(4).toUpperCase())) {
+            jbtnDienteAusenteActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnSinErupcionar.getName().substring(4).toUpperCase())) {
+            jbtnSinErupcionarActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnConSellante.getName().substring(4).toUpperCase())) {
+            jbtnConSellanteActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnNecesitaSellante.getName().substring(4).toUpperCase())) {
+            jbtnNecesitaSellanteActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnCoronaBuena.getName().substring(4).toUpperCase())) {
+            jbtnCoronaBuenaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnConEndodoncia.getName().substring(4).toUpperCase())) {
+            jbtnConEndodonciaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnExodonciaIndicada.getName().substring(4).toUpperCase())) {
+            jbtnExodonciaIndicadaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnAbrasion.getName().substring(4).toUpperCase())) {
+            jbtnAbrasionActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnAtricion.getName().substring(4).toUpperCase())) {
+            jbtnAtricionActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnNucleoARealizar.getName().substring(4).toUpperCase())) {
+            jbtnNucleoARealizarActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnSemiIncluido.getName().substring(4).toUpperCase())) {
+            jbtnSemiIncluidoActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnGiroversion.getName().substring(4).toUpperCase())) {
+            jbtnGiroversionActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnProvisional.getName().substring(4).toUpperCase())) {
+            jbtnProvisionalActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnResinaFisica.getName().substring(4).toUpperCase())) {
+            jbtnResinaFisicaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnIonometroDeVidrio.getName().substring(4).toUpperCase())) {
+            jbtnIonometroDeVidrioActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnExodonciaRealizada.getName().substring(4).toUpperCase())) {
+            jbtnExodonciaRealizadaActionPerformed(evt);
+        } else if (Traum.toUpperCase().equals(this.jbtnNucleoBueno.getName().substring(4).toUpperCase())) {
+            jbtnNucleoBuenoActionPerformed(evt);
+        }
+    }
+
+    private void identificarDientePanel(int dient) {
+        if (dient >= 11 && dient <= 18) {
+            jPanel = jpnlDiente11_18;
+        } else if (dient >= 21 && dient <= 28) {
+            jPanel = jpnlDiente21_28;
+        } else if (dient >= 31 && dient <= 38) {
+            jPanel = jpnlDiente31_38;
+        } else if (dient >= 41 && dient <= 48) {
+            jPanel = jpnlDiente41_48;
+        } else if (dient >= 51 && dient <= 55) {
+            jPanel = jpnlDiente51_55;
+        } else if (dient >= 61 && dient <= 65) {
+            jPanel = jpnlDiente61_65;
+        } else if (dient >= 71 && dient <= 75) {
+            jPanel = jpnlDiente71_75;
+        } else if (dient >= 81 && dient <= 85) {
+            jPanel = jpnlDiente81_85;
+        }
+        switch (dient) {
+            case 11:
+                jButton = jbtnDiente11;
+                break;
+            case 12:
+                jButton = jbtnDiente12;
+                break;
+            case 13:
+                jButton = jbtnDiente13;
+                break;
+            case 14:
+                jButton = jbtnDiente14;
+                break;
+            case 15:
+                jButton = jbtnDiente15;
+                break;
+            case 16:
+                jButton = jbtnDiente16;
+                break;
+            case 17:
+                jButton = jbtnDiente17;
+                break;
+            case 18:
+                jButton = jbtnDiente18;
+                break;
+            case 21:
+                jButton = jbtnDiente21;
+                break;
+            case 22:
+                jButton = jbtnDiente22;
+                break;
+            case 23:
+                jButton = jbtnDiente23;
+                break;
+            case 24:
+                jButton = jbtnDiente24;
+                break;
+            case 25:
+                jButton = jbtnDiente25;
+                break;
+            case 26:
+                jButton = jbtnDiente26;
+                break;
+            case 27:
+                jButton = jbtnDiente27;
+                break;
+            case 28:
+                jButton = jbtnDiente28;
+                break;
+            case 31:
+                jButton = jbtnDiente31;
+                break;
+            case 32:
+                jButton = jbtnDiente32;
+                break;
+            case 33:
+                jButton = jbtnDiente33;
+                break;
+            case 34:
+                jButton = jbtnDiente34;
+                break;
+            case 35:
+                jButton = jbtnDiente35;
+                break;
+            case 36:
+                jButton = jbtnDiente36;
+                break;
+            case 37:
+                jButton = jbtnDiente37;
+                break;
+            case 38:
+                jButton = jbtnDiente38;
+                break;
+            case 41:
+                jButton = jbtnDiente41;
+                break;
+            case 42:
+                jButton = jbtnDiente42;
+                break;
+            case 43:
+                jButton = jbtnDiente43;
+                break;
+            case 44:
+                jButton = jbtnDiente44;
+                break;
+            case 45:
+                jButton = jbtnDiente45;
+                break;
+            case 46:
+                jButton = jbtnDiente46;
+                break;
+            case 47:
+                jButton = jbtnDiente47;
+                break;
+            case 48:
+                jButton = jbtnDiente48;
+                break;
+            case 51:
+                jButton = jbtnDiente51;
+                break;
+            case 52:
+                jButton = jbtnDiente52;
+                break;
+            case 53:
+                jButton = jbtnDiente53;
+                break;
+            case 54:
+                jButton = jbtnDiente54;
+                break;
+            case 55:
+                jButton = jbtnDiente55;
+                break;
+            case 61:
+                jButton = jbtnDiente61;
+                break;
+            case 62:
+                jButton = jbtnDiente62;
+                break;
+            case 63:
+                jButton = jbtnDiente63;
+                break;
+            case 64:
+                jButton = jbtnDiente64;
+                break;
+            case 65:
+                jButton = jbtnDiente65;
+                break;
+            case 71:
+                jButton = jbtnDiente71;
+                break;
+            case 72:
+                jButton = jbtnDiente72;
+                break;
+            case 73:
+                jButton = jbtnDiente73;
+                break;
+            case 74:
+                jButton = jbtnDiente74;
+                break;
+            case 75:
+                jButton = jbtnDiente75;
+                break;
+            case 81:
+                jButton = jbtnDiente81;
+                break;
+            case 82:
+                jButton = jbtnDiente82;
+                break;
+            case 83:
+                jButton = jbtnDiente83;
+                break;
+            case 84:
+                jButton = jbtnDiente84;
+                break;
+            case 85:
+                jButton = jbtnDiente85;
+                break;
+        }
+    }
+}
